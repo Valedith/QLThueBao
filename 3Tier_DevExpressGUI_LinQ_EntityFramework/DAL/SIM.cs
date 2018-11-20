@@ -18,12 +18,16 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         public SIM()
         {
             this.CONTRACTs = new HashSet<CONTRACT>();
+            this.FAREs = new HashSet<FARE>();
         }
     
         public int ID_SIM { get; set; }
         public Nullable<int> PHONENUMBER { get; set; }
+        public Nullable<int> STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONTRACT> CONTRACTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FARE> FAREs { get; set; }
     }
 }

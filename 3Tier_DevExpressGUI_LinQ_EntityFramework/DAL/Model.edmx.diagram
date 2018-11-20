@@ -4,12 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8d46aac97aae480daf6529371274ddd4" Name="Diagram1">
-        <EntityTypeShape EntityType="QLYCUOCDTModel.CONTRACT" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLYCUOCDTModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLYCUOCDTModel.SIM" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+      <Diagram DiagramId="cd7c875422b5408faec858639edf8096" Name="Diagram1">
+        <EntityTypeShape EntityType="QLYCUOCDTModel.BILL" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLYCUOCDTModel.CONTRACT" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLYCUOCDTModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLYCUOCDTModel.FARE" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLYCUOCDTModel.SIM" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="QLYCUOCDTModel.FK_BILL_CUSTOMER" ManuallyRouted="false" />
         <AssociationConnector Association="QLYCUOCDTModel.FK_CONTRACT_CUSTOMER" ManuallyRouted="false" />
         <AssociationConnector Association="QLYCUOCDTModel.FK_CONTRACT_SIM" ManuallyRouted="false" />
+        <AssociationConnector Association="QLYCUOCDTModel.FK_FARE_SIM" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

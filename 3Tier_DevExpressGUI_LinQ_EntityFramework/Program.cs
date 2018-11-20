@@ -1,4 +1,6 @@
-﻿using _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI;
+﻿
+using _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.CustomerGUI;
+using _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CustomerGUI());
+            Application.Run(new SimGUI());
         }
     }
 }

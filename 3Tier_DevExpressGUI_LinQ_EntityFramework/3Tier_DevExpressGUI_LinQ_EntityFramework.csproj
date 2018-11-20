@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -48,7 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -62,11 +64,14 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -79,10 +84,14 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,14 +103,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\ContractBUS.cs" />
     <Compile Include="BUS\CustomerBUS.cs" />
+    <Compile Include="BUS\SimBUS.cs" />
+    <Compile Include="DAL\BILL.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\BillDAL.cs" />
     <Compile Include="DAL\CONTRACT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ContractDAL.cs" />
     <Compile Include="DAL\CUSTOMER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CustomerDAL.cs" />
+    <Compile Include="DAL\FARE.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FareDAL.cs" />
     <Compile Include="DAL\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,27 +140,168 @@
     <Compile Include="DAL\SIM.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Common\CollectionViewModel.cs" />
-    <Compile Include="GUI\Common\EntitiesViewModel.cs" />
-    <Compile Include="GUI\Common\ReadOnlyCollectionViewModel.cs" />
-    <Compile Include="GUI\Common\SingleObjectViewModel.cs" />
-    <Compile Include="GUI\CustomerGUI.cs">
+    <Compile Include="DAL\SimDAL.cs" />
+    <Compile Include="GUI\BillGUI\BillAdvSearchGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CustomerGUI.Designer.cs">
+    <Compile Include="GUI\BillGUI\BillAdvSearchGUI.Designer.cs">
+      <DependentUpon>BillAdvSearchGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillGUI.Designer.cs">
+      <DependentUpon>BillGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillEditGUI.Designer.cs">
+      <DependentUpon>BillEditGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BillGUI\BillCreateInfoGUI.Designer.cs">
+      <DependentUpon>BillCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractAdvSearchGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractAdvSearchGUI.Designer.cs">
+      <DependentUpon>ContractAdvSearchGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractCreateInfoGUI.Designer.cs">
+      <DependentUpon>ContractCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractGUI.Designer.cs">
+      <DependentUpon>ContractGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ContractGUI\ContractEditGUI.Designer.cs">
+      <DependentUpon>ContractEditGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.Designer.cs">
+      <DependentUpon>CustomerAdvSearchGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.Designer.cs">
+      <DependentUpon>CustomerCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomerGUI2\CustomerGUI.Designer.cs">
       <DependentUpon>CustomerGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QLYCUOCDTEntitiesDataModel\IQLYCUOCDTEntitiesUnitOfWork.cs" />
-    <Compile Include="GUI\QLYCUOCDTEntitiesDataModel\QLYCUOCDTEntitiesUnitOfWork.cs" />
-    <Compile Include="GUI\QLYCUOCDTEntitiesDataModel\UnitOfWorkSource.cs" />
-    <Compile Include="GUI\ViewModels\CONTRACT\CONTRACTCollectionViewModel.cs" />
-    <Compile Include="GUI\ViewModels\CUSTOMER\CUSTOMERCollectionViewModel.cs" />
-    <Compile Include="GUI\ViewModels\SIM\SIMCollectionViewModel.cs" />
+    <Compile Include="GUI\CustomersGUI\CustomersAdvSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersAdvSearch.Designer.cs">
+      <DependentUpon>CustomersAdvSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersCreateInfoGUI.Designer.cs">
+      <DependentUpon>CustomersCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersEditGUI.Designer.cs">
+      <DependentUpon>CustomersEditGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomersGUI\CustomersGUI.Designer.cs">
+      <DependentUpon>CustomersGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimAdvSearchGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimAdvSearchGUI.Designer.cs">
+      <DependentUpon>SimAdvSearchGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimGUI.Designer.cs">
+      <DependentUpon>SimGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimCreateInfoGUI.Designer.cs">
+      <DependentUpon>SimCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SimGUI\SimEditGUI.Designer.cs">
+      <DependentUpon>SimEditGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public\RandomGenerator.cs" />
-    <EmbeddedResource Include="GUI\CustomerGUI.resx">
+    <EmbeddedResource Include="GUI\BillGUI\BillCreateInfoGUI.resx">
+      <DependentUpon>BillCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BillGUI\BillEditGUI.resx">
+      <DependentUpon>BillEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BillGUI\BillGUI.resx">
+      <DependentUpon>BillGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ContractGUI\ContractCreateInfoGUI.resx">
+      <DependentUpon>ContractCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ContractGUI\ContractEditGUI.resx">
+      <DependentUpon>ContractEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ContractGUI\ContractGUI.resx">
+      <DependentUpon>ContractGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.resx">
+      <DependentUpon>CustomerAdvSearchGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.resx">
+      <DependentUpon>CustomerCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerGUI.resx">
       <DependentUpon>CustomerGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomersGUI\CustomersCreateInfoGUI.resx">
+      <DependentUpon>CustomersCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomersGUI\CustomersEditGUI.resx">
+      <DependentUpon>CustomersEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CustomersGUI\CustomersGUI.resx">
+      <DependentUpon>CustomersGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SimGUI\SimCreateInfoGUI.resx">
+      <DependentUpon>SimCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SimGUI\SimEditGUI.resx">
+      <DependentUpon>SimEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SimGUI\SimGUI.resx">
+      <DependentUpon>SimGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -174,29 +335,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="DAL\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
-    <Content Include="QLYCUOCDT.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="QLYCUOCDT_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>QLYCUOCDT.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
+    <Folder Include="GUI\FareGUI\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -209,6 +351,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLYCUOCDT.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QLYCUOCDT_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>QLYCUOCDT.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
