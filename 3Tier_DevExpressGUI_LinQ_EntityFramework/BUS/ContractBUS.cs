@@ -14,9 +14,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return contract_dal.GetAll();
         }
-        public void Create(string cus_id, int sim_id, int? fare)
+        public void Create(string cus_id, int sim_id, DateTime date, int? fare)
         {
-            contract_dal.setCONTRACT(cus_id, sim_id, fare);
+            contract_dal.setCONTRACT(cus_id, sim_id, date, fare);
             contract_dal.Create();
         }
 
@@ -26,9 +26,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
             contract_dal.Delete();
         }
 
-        public void Update(string id,string cus_id, int sim_id, int? fare)
+        public void Update(string id,string cus_id, int sim_id, DateTime date, int? fare)
         {
-            contract_dal.setCONTRACT(id,cus_id, sim_id, fare);
+            contract_dal.setCONTRACT(id,cus_id, sim_id, date, fare);
             contract_dal.Update();
         }
     }

@@ -1,6 +1,6 @@
-﻿namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
+﻿namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
 {
-    partial class BillGUI
+    partial class FareGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -65,7 +66,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
-             // 
+            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -75,7 +76,8 @@
             this.bsiRecordsCount,
             this.bbiNew,
             this.bbiEdit,
-            this.bbiDelete});
+            this.bbiDelete,
+            this.bbiRefresh});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 20;
             this.ribbonControl.Name = "ribbonControl";
@@ -125,6 +127,13 @@
             this.bbiDelete.Name = "bbiDelete";
             this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
+            // bbiRefresh
+            // 
+            this.bbiRefresh.Caption = "Refresh";
+            this.bbiRefresh.Id = 19;
+            this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
+            this.bbiRefresh.Name = "bbiRefresh";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -160,7 +169,7 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(790, 31);
             // 
-            // BillGUI
+            // FareGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,7 +177,7 @@
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "BillGUI";
+            this.Name = "FareGUI";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
@@ -193,5 +202,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
+        private DevExpress.XtraBars.BarButtonItem bbiRefresh;
     }
 }

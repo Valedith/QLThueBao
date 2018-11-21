@@ -10,65 +10,54 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraBars;
+using DevExpress.XtraGrid.Views.Grid;
+using _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS;
 
 namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
 {
     public partial class BillGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        BillBUS bill = new BillBUS();
         public BillGUI()
         {
             InitializeComponent();
-
-            BindingList<Customer> dataSource = GetDataSource();
-            gridControl.DataSource = dataSource;
-            bsiRecordsCount.Caption = "RECORDS : " + dataSource.Count;
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public BindingList<Customer> GetDataSource()
-        {
-            BindingList<Customer> result = new BindingList<Customer>();
-            result.Add(new Customer()
-            {
-                ID = 1,
-                Name = "ACME",
-                Address = "2525 E El Segundo Blvd",
-                City = "El Segundo",
-                State = "CA",
-                ZipCode = "90245",
-                Phone = "(310) 536-0611"
-            });
-            result.Add(new Customer()
-            {
-                ID = 2,
-                Name = "Electronics Depot",
-                Address = "2455 Paces Ferry Road NW",
-                City = "Atlanta",
-                State = "GA",
-                ZipCode = "30339",
-                Phone = "(800) 595-3232"
-            });
-            return result;
-        }
-        public class Customer
-        {
-            [Key, Display(AutoGenerateField = false)]
-            public int ID { get; set; }
-            [Required]
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            [Display(Name = "Zip Code")]
-            public string ZipCode { get; set; }
-            public string Phone { get; set; }
-        }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            BillCreateInfoGUI bill_create = new BillCreateInfoGUI();
+            bill_create.Visible = true;
         }
+
+        private void gridControl_Load(object sender, EventArgs e)
+        {
+            gridControl.DataSource = bill.GetAll();
+            gridControl.MainView.PopulateColumns();
+            ((GridView)gridControl.MainView).Columns[0].Caption = "Mã hóa đơn";
+            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã khách hàng";
+            ((GridView)gridControl.MainView).Columns[2].Caption = "Số phút sử dụng";
+            ((GridView)gridControl.MainView).Columns[3].Caption = "Ngày xuất phiếu";
+            ((GridView)gridControl.MainView).Columns[4].Caption = "Ngày cắt";
+            ((GridView)gridControl.MainView).Columns[5].Caption = "Cước thuê bao";
+            ((GridView)gridControl.MainView).Columns[6].Caption = "Cước tháng";
+            ((GridView)gridControl.MainView).Columns[7].Visible = false;
+        }
+
+        private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            BillEditGUI bill_edit = new BillEditGUI();
+            bill_edit.Visible = true;
+        }
+
+        private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            bill.Delete(gridView.GetFocusedRowCellValue("ID_BILL").ToString());
+            gridControl.DataSource = bill.GetAll();
+        }
+        
     }
 }

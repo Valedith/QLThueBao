@@ -11,22 +11,24 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     {
         QLYCUOCDTEntities db = new QLYCUOCDTEntities();
         CONTRACT contract = new CONTRACT();
-        public void setCONTRACT(string cus_id,int sim_id,int? fare)
+        public void setCONTRACT(string cus_id,int sim_id,DateTime date,int? fare)
         {
             this.contract.ID_CUSTOMER = cus_id;
             this.contract.ID_SIM = sim_id;
             this.contract.FARE = fare;
+            this.contract.DATEREGISTER = date;
         }
         public void setCONTRACT(string id)
         {
             this.contract.ID_CONTRACT = id;
         }
-        public void setCONTRACT(string id, string cus_id, int sim_id, int? fare)
+        public void setCONTRACT(string id, string cus_id, int sim_id,DateTime date, int? fare)
         {
             this.contract.ID_CONTRACT = id;
             this.contract.ID_CUSTOMER = cus_id;
             this.contract.ID_SIM = sim_id;
             this.contract.FARE = fare;
+            this.contract.DATEREGISTER = date;
         }
         public IEnumerable<CONTRACT> GetAll()
         {

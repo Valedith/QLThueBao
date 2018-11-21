@@ -103,8 +103,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\BillBUS.cs" />
     <Compile Include="BUS\ContractBUS.cs" />
     <Compile Include="BUS\CustomerBUS.cs" />
+    <Compile Include="BUS\FareBUS.cs" />
     <Compile Include="BUS\SimBUS.cs" />
     <Compile Include="DAL\BILL.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -189,24 +191,6 @@
     <Compile Include="GUI\ContractGUI\ContractEditGUI.Designer.cs">
       <DependentUpon>ContractEditGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.Designer.cs">
-      <DependentUpon>CustomerAdvSearchGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.Designer.cs">
-      <DependentUpon>CustomerCreateInfoGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CustomerGUI2\CustomerGUI.Designer.cs">
-      <DependentUpon>CustomerGUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\CustomersGUI\CustomersAdvSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +214,24 @@
     </Compile>
     <Compile Include="GUI\CustomersGUI\CustomersGUI.Designer.cs">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareGUI.Designer.cs">
+      <DependentUpon>FareGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareEditGUI.Designer.cs">
+      <DependentUpon>FareEditGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FareGUI\FareCreateInfoGUI.Designer.cs">
+      <DependentUpon>FareCreateInfoGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\SimGUI\SimAdvSearchGUI.cs">
       <SubType>Form</SubType>
@@ -255,6 +257,12 @@
     <Compile Include="GUI\SimGUI\SimEditGUI.Designer.cs">
       <DependentUpon>SimEditGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MainGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MainGUI.Designer.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public\RandomGenerator.cs" />
@@ -276,15 +284,6 @@
     <EmbeddedResource Include="GUI\ContractGUI\ContractGUI.resx">
       <DependentUpon>ContractGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerAdvSearchGUI.resx">
-      <DependentUpon>CustomerAdvSearchGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerCreateInfoGUI.resx">
-      <DependentUpon>CustomerCreateInfoGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CustomerGUI2\CustomerGUI.resx">
-      <DependentUpon>CustomerGUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomersGUI\CustomersCreateInfoGUI.resx">
       <DependentUpon>CustomersCreateInfoGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +292,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CustomersGUI\CustomersGUI.resx">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FareGUI\FareCreateInfoGUI.resx">
+      <DependentUpon>FareCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FareGUI\FareEditGUI.resx">
+      <DependentUpon>FareEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FareGUI\FareGUI.resx">
+      <DependentUpon>FareGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MainGUI.resx">
+      <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SimGUI\SimCreateInfoGUI.resx">
       <DependentUpon>SimCreateInfoGUI.cs</DependentUpon>
@@ -337,9 +348,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\FareGUI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
