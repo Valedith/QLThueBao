@@ -14,6 +14,7 @@
         <AssociationConnector Association="QLYCUOCDTModel.FK_CONTRACT_CUSTOMER" ManuallyRouted="false" />
         <AssociationConnector Association="QLYCUOCDTModel.FK_CONTRACT_SIM" ManuallyRouted="false" />
         <AssociationConnector Association="QLYCUOCDTModel.FK_FARE_SIM" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLYCUOCDTModel.Admin" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

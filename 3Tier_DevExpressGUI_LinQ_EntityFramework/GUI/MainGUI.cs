@@ -53,5 +53,17 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI
             GUI.SimGUI.SimGUI sim = new GUI.SimGUI.SimGUI();
             sim.Visible = true;
         }
+
+        private void MainGUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tileBarItem6_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.Close();
+            GUI.Login login = new GUI.Login();
+            login.Visible = true;
+        }
     }
 }

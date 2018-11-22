@@ -30,5 +30,6 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<FARE> FAREs { get; set; }
         public virtual DbSet<SIM> SIMs { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainGUI());
+            Application.Run(new Login());
         }
     }
 }
