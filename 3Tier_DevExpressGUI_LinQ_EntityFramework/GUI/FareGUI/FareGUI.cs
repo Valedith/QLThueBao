@@ -57,5 +57,11 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
             fare.Delete(Convert.ToInt32(gridView.GetFocusedRowCellValue("ID").ToString()));
             gridControl.DataSource = fare.GetAll();
         }
+
+        private void btn_Import_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FareImportGUI fareimport = new FareImportGUI();
+            fareimport.Visible = true;
+        }
     }
 }

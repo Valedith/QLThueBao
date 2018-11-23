@@ -25,5 +25,14 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
         {
             return random.Next(min, max);
         }
+        public TimeSpan RandomTimeSpan()
+        {
+            Random random = new Random();
+            TimeSpan start = TimeSpan.FromHours(0);
+            TimeSpan end = TimeSpan.FromHours(24);
+            int maxMinutes = (int)((end - start).TotalMinutes);
+            int minutes = random.Next(maxMinutes);
+                return start.Add(TimeSpan.FromMinutes(minutes));
+        }
     }
 }

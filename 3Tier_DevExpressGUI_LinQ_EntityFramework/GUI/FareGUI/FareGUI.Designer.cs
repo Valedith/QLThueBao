@@ -37,6 +37,7 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Import = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -77,9 +78,10 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.btn_Import});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -134,6 +136,14 @@
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
             // 
+            // btn_Import
+            // 
+            this.btn_Import.Caption = "Import";
+            this.btn_Import.Id = 20;
+            this.btn_Import.ImageOptions.ImageUri.Uri = "Up";
+            this.btn_Import.Name = "btn_Import";
+            this.btn_Import.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Import_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -157,6 +167,7 @@
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiPrintPreview);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_Import);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "Print and Export";
@@ -203,5 +214,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
+        private DevExpress.XtraBars.BarButtonItem btn_Import;
     }
 }
