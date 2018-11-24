@@ -14,22 +14,35 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return sim_dal.GetAll();
         }
-        public void Create(int? phonenumber, int? status)
+        public string Create(int? phonenumber, int? status)
         {
-            sim_dal.setSim(phonenumber,status);
-            sim_dal.Create();
+            if (phonenumber.ToString().Length < 0 || phonenumber.ToString().Length > 11)
+                return "Số điện thoại không hợp lệ";
+            else
+            {
+                sim_dal.setSim(phonenumber, status);
+                sim_dal.Create();
+                return "Thêm thành công !";
+            }
         }
 
-        public void Delete(int id)
+        public string Delete(int id)
         {
-            sim_dal.setSim(id);
-            sim_dal.Delete();
+                sim_dal.setSim(id);
+                sim_dal.Delete();
+                    return "Xóa thành công !";
         }
 
-        public void Update(int id, int phonenumber, int status)
+        public string Update(int id, int phonenumber, int status)
         {
-            sim_dal.setSim(id, phonenumber, status);
-            sim_dal.Update();
+            if (phonenumber.ToString().Length < 0 || phonenumber.ToString().Length > 11)
+                return "Số điện thoại không hợp lệ";
+            else
+            {
+                sim_dal.setSim(id, phonenumber, status);
+                sim_dal.Update();
+                return "Đã lưu thay đổi !";
+            }
         }
     }
 }

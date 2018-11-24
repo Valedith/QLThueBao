@@ -14,6 +14,7 @@ using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Helpers;
 using _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraBars;
 
 namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
 {
@@ -55,6 +56,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
 
             cb_CusId.DisplayMember = "Text";
             cb_CusId.ValueMember = "Value";
+
+            cb_CusId.SelectedItem = null;
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -69,7 +73,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
         private void Reset()
         {
             cb_CusId.SelectedItem = null;
-            cb_CusId.SelectedText = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
 
             txt_id.Text = ""; num_Minutes.Value = 0; num_Postage.Value = 50000;txt_fare.Text = "";date_Export.Value = DateTime.Now;txt_datecut.Text = "";
         }
@@ -97,6 +101,20 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
         {
             bill.Delete(txt_id.Text);
             gridControl1.DataSource = bill.GetAll();
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }

@@ -53,6 +53,8 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -112,9 +114,11 @@
             this.bbiSaveAndNew,
             this.bbiReset,
             this.bbiDelete,
-            this.bbiClose});
+            this.bbiClose,
+            this.btn_backtoMain,
+            this.btn_logOut});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 10;
+            this.mainRibbonControl.MaxItemId = 12;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -125,7 +129,7 @@
             // 
             // bbiSave
             // 
-            this.bbiSave.Caption = "Save";
+            this.bbiSave.Caption = "Lưu thay đổi";
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
@@ -133,7 +137,7 @@
             // 
             // bbiSaveAndClose
             // 
-            this.bbiSaveAndClose.Caption = "Save And Close";
+            this.bbiSaveAndClose.Caption = "Lưu và thoát";
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
@@ -141,7 +145,7 @@
             // 
             // bbiSaveAndNew
             // 
-            this.bbiSaveAndNew.Caption = "Save And New";
+            this.bbiSaveAndNew.Caption = "Lưu và làm mới";
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
@@ -149,7 +153,7 @@
             // 
             // bbiReset
             // 
-            this.bbiReset.Caption = "Reset Changes";
+            this.bbiReset.Caption = "Làm mới";
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
@@ -157,7 +161,7 @@
             // 
             // bbiDelete
             // 
-            this.bbiDelete.Caption = "Delete";
+            this.bbiDelete.Caption = "Xóa dữ liệu";
             this.bbiDelete.Id = 6;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
@@ -165,7 +169,7 @@
             // 
             // bbiClose
             // 
-            this.bbiClose.Caption = "Close";
+            this.bbiClose.Caption = "Thoát";
             this.bbiClose.Id = 7;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
@@ -177,7 +181,7 @@
             this.mainRibbonPageGroup});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Home";
+            this.mainRibbonPage.Text = "Thao tác";
             // 
             // mainRibbonPageGroup
             // 
@@ -187,10 +191,11 @@
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiDelete);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_backtoMain);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_logOut);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.ShowCaptionButton = false;
-            this.mainRibbonPageGroup.Text = "Tasks";
             // 
             // txt_id
             // 
@@ -318,6 +323,22 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
+            // btn_backtoMain
+            // 
+            this.btn_backtoMain.Caption = "Trở về trang chính";
+            this.btn_backtoMain.Id = 10;
+            this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
+            this.btn_backtoMain.Name = "btn_backtoMain";
+            this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
+            // 
+            // btn_logOut
+            // 
+            this.btn_logOut.Caption = "Đăng xuất";
+            this.btn_logOut.Id = 11;
+            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
+            this.btn_logOut.Name = "btn_logOut";
+            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Logout_ItemClick);
+            // 
             // ContractEditGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +349,7 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "ContractEditGUI";
             this.Ribbon = this.mainRibbonControl;
+            this.Text = "Thay đổi dữ liệu hợp đồng";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -373,5 +395,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
+        private DevExpress.XtraBars.BarButtonItem btn_logOut;
     }
 }

@@ -14,6 +14,7 @@ using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Helpers;
 using DevExpress.XtraGrid.Views.Grid;
 using _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS;
+using DevExpress.XtraBars;
 
 namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.CustomersGUI
 {
@@ -50,36 +51,109 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.CustomersGUI
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            customer.Update(txt_id.Text,txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text,txt_position.Text,txt_address.Text);
-            gridControl1.DataSource = customer.GetAll();
+            if (txt_name.Text == "")
+                MessageBox.Show("Vui lòng nhập họ tên khách hàng !");
+            else if (txt_job.Text == "")
+                MessageBox.Show("Vui lòng nhập nghề nghiệp khách hàng !");
+            else if (txt_position.Text == "")
+                MessageBox.Show("Vui lòng nhập chức vụ khách hàng !");
+            else if (txt_address.Text == "")
+                MessageBox.Show("Vui lòng nhập địa chỉ khách hàng !");
+            else
+            {
+                MessageBox.Show(customer.Update(txt_id.Text, txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text, txt_position.Text, txt_address.Text));
+                gridControl1.DataSource = customer.GetAll();
+            }
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            customer.Update(txt_id.Text, txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text, txt_position.Text, txt_address.Text);
-            this.Dispose();
+            if (txt_name.Text == "")
+                MessageBox.Show("Vui lòng nhập họ tên khách hàng !");
+            else if (txt_job.Text == "")
+                MessageBox.Show("Vui lòng nhập nghề nghiệp khách hàng !");
+            else if (txt_position.Text == "")
+                MessageBox.Show("Vui lòng nhập chức vụ khách hàng !");
+            else if (txt_address.Text == "")
+                MessageBox.Show("Vui lòng nhập địa chỉ khách hàng !");
+            else
+            {
+                MessageBox.Show(customer.Update(txt_id.Text, txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text, txt_position.Text, txt_address.Text));
+                gridControl1.DataSource = customer.GetAll();
+                this.Dispose();
+            }
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            customer.Update(txt_id.Text, txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text, txt_position.Text, txt_address.Text);
-            txt_id.Text = "";txt_name.Text = "";txt_job.Text = "";txt_position.Text = "";txt_address.Text = "";txt_iden.Text = "";
+            if (txt_name.Text == "")
+                MessageBox.Show("Vui lòng nhập họ tên khách hàng !");
+            else if (txt_job.Text == "")
+                MessageBox.Show("Vui lòng nhập nghề nghiệp khách hàng !");
+            else if (txt_position.Text == "")
+                MessageBox.Show("Vui lòng nhập chức vụ khách hàng !");
+            else if (txt_address.Text == "")
+                MessageBox.Show("Vui lòng nhập địa chỉ khách hàng !");
+            else
+            {
+                MessageBox.Show(customer.Update(txt_id.Text, txt_name.Text, Convert.ToInt32(txt_iden.Text), txt_job.Text, txt_position.Text, txt_address.Text));
+                gridControl1.DataSource = customer.GetAll();
+                Reset();
+            }
         }
 
         private void bbiReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Reset();
+        }
+        private void Reset()
+        {
             txt_id.Text = ""; txt_name.Text = ""; txt_job.Text = ""; txt_position.Text = ""; txt_address.Text = ""; txt_iden.Text = "";
         }
-
         private void bbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            customer.Delete(txt_name.Text);
-            gridControl1.DataSource = customer.GetAll();
+
+            if (txt_id.Text == "")
+                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
+            else
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
+                                            "Xác nhận xóa dữ liệu",
+                                            MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    MessageBox.Show(customer.Delete(txt_name.Text));
+                    gridControl1.DataSource = customer.GetAll();
+                    Reset();
+                }
+            }
         }
 
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void txt_iden_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

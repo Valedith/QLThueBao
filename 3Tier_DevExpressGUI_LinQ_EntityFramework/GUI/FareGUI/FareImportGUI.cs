@@ -109,7 +109,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()));
+                    MessageBox.Show(fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
                     i++;
                 }
             }
@@ -124,7 +124,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()));
+                    MessageBox.Show(fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
                     i++;
                 }
             }
@@ -140,7 +140,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()));
+                    MessageBox.Show(fare.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
                     i++;
                 }
             }

@@ -44,10 +44,11 @@
             this.bbiSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveAndNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_Fare)).BeginInit();
@@ -186,10 +187,11 @@
             this.bbiSaveAndClose,
             this.bbiSaveAndNew,
             this.bbiReset,
-            this.bbiDelete,
-            this.bbiClose});
+            this.bbiClose,
+            this.btn_logOut,
+            this.btn_backtoMain});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 10;
+            this.mainRibbonControl.MaxItemId = 15;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -200,7 +202,7 @@
             // 
             // bbiSave
             // 
-            this.bbiSave.Caption = "Save";
+            this.bbiSave.Caption = "Lưu thay đổi";
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
@@ -208,7 +210,7 @@
             // 
             // bbiSaveAndClose
             // 
-            this.bbiSaveAndClose.Caption = "Save And Close";
+            this.bbiSaveAndClose.Caption = "Lưu và thoát";
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
@@ -216,7 +218,7 @@
             // 
             // bbiSaveAndNew
             // 
-            this.bbiSaveAndNew.Caption = "Save And New";
+            this.bbiSaveAndNew.Caption = "Lưu và làm mới";
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
@@ -224,7 +226,7 @@
             // 
             // bbiReset
             // 
-            this.bbiReset.Caption = "Reset Changes";
+            this.bbiReset.Caption = "Làm mới";
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
@@ -244,7 +246,7 @@
             this.mainRibbonPageGroup});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Home";
+            this.mainRibbonPage.Text = "Thao tác";
             // 
             // mainRibbonPageGroup
             // 
@@ -253,11 +255,28 @@
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndClose);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiDelete);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_backtoMain);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_logOut);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.ShowCaptionButton = false;
             this.mainRibbonPageGroup.Text = "Tasks";
+            // 
+            // btn_logOut
+            // 
+            this.btn_logOut.Caption = "Đăng xuất";
+            this.btn_logOut.Id = 13;
+            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
+            this.btn_logOut.Name = "btn_logOut";
+            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_logOut_ItemClick);
+            // 
+            // btn_backtoMain
+            // 
+            this.btn_backtoMain.Caption = "Trở về trang chính";
+            this.btn_backtoMain.Id = 14;
+            this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
+            this.btn_backtoMain.Name = "btn_backtoMain";
+            this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
             // 
             // ContractCreateInfoGUI
             // 
@@ -269,6 +288,7 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "ContractCreateInfoGUI";
             this.Ribbon = this.mainRibbonControl;
+            this.Text = "Thêm dữ liệu hợp đồng mới";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.num_Fare)).EndInit();
@@ -295,7 +315,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiSaveAndClose;
         private DevExpress.XtraBars.BarButtonItem bbiSaveAndNew;
         private DevExpress.XtraBars.BarButtonItem bbiReset;
-        private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiClose;
         private System.Windows.Forms.ComboBox cb_CusId;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -306,5 +325,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraBars.BarButtonItem btn_logOut;
+        private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
     }
 }

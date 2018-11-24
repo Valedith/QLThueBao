@@ -15,10 +15,10 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
 {
-    public partial class ContractGUI : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class CustomerCreateInfoGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         ContractBUS contract = new ContractBUS();
-        public ContractGUI()
+        public CustomerCreateInfoGUI()
         {
             InitializeComponent();
         }
@@ -54,9 +54,43 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            contract.Delete(gridView.GetFocusedRowCellValue("ID_CONTRACT").ToString());
+            if (gridView.GetFocusedRowCellValue("ID_CONTRACT") == null)
+                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
+            else
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
+                                            "Xác nhận xóa dữ liệu",
+                                            MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    contract.Delete(gridView.GetFocusedRowCellValue("ID_CONTRACT").ToString());
+                    gridControl.DataSource = contract.GetAll();
+                }
+            }
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void btn_close_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btn_Refresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
             gridControl.DataSource = contract.GetAll();
         }
-        
     }
 }

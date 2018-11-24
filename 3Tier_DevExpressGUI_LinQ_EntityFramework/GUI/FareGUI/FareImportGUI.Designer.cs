@@ -38,11 +38,11 @@
             this.bbiBrowse = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRandom = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnRandom = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -103,7 +103,7 @@
             // 
             // bbiSave
             // 
-            this.bbiSave.Caption = "Save";
+            this.bbiSave.Caption = "Lưu thay đổi";
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
@@ -111,7 +111,7 @@
             // 
             // bbiSaveAndClose
             // 
-            this.bbiSaveAndClose.Caption = "Save And Close";
+            this.bbiSaveAndClose.Caption = "Lưu và thoát";
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
@@ -119,7 +119,7 @@
             // 
             // bbiSaveAndNew
             // 
-            this.bbiSaveAndNew.Caption = "Save And New";
+            this.bbiSaveAndNew.Caption = "Lưu và làm mới";
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
@@ -127,7 +127,7 @@
             // 
             // bbiBrowse
             // 
-            this.bbiBrowse.Caption = "Browse Text File";
+            this.bbiBrowse.Caption = "Chọn dữ liệu cần nhập";
             this.bbiBrowse.Id = 5;
             this.bbiBrowse.ImageOptions.ImageUri.Uri = "Open";
             this.bbiBrowse.Name = "bbiBrowse";
@@ -142,11 +142,19 @@
             // 
             // bbiClose
             // 
-            this.bbiClose.Caption = "Close";
+            this.bbiClose.Caption = "Thoát";
             this.bbiClose.Id = 7;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
+            // 
+            // btnRandom
+            // 
+            this.btnRandom.Caption = "Tạo dữ liệu thử";
+            this.btnRandom.Id = 10;
+            this.btnRandom.ImageOptions.ImageUri.Uri = "Recurrence";
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRandom_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -154,7 +162,7 @@
             this.mainRibbonPageGroup});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Home";
+            this.mainRibbonPage.Text = "Thao tác";
             // 
             // mainRibbonPageGroup
             // 
@@ -167,7 +175,6 @@
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.ShowCaptionButton = false;
-            this.mainRibbonPageGroup.Text = "Tasks";
             // 
             // layoutControlGroup1
             // 
@@ -189,14 +196,6 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // btnRandom
-            // 
-            this.btnRandom.Caption = "Randomize";
-            this.btnRandom.Id = 10;
-            this.btnRandom.ImageOptions.ImageUri.Uri = "Recurrence";
-            this.btnRandom.Name = "btnRandom";
-            this.btnRandom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRandom_ItemClick);
-            // 
             // FareImportGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +206,7 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "FareImportGUI";
             this.Ribbon = this.mainRibbonControl;
+            this.Text = "Nhập log từ file";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

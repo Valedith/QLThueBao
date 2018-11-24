@@ -14,22 +14,35 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return contract_dal.GetAll();
         }
-        public void Create(string cus_id, int sim_id, DateTime date, int? fare)
+        public string Create(string cus_id, int sim_id, DateTime date, int? fare)
         {
-            contract_dal.setCONTRACT(cus_id, sim_id, date, fare);
-            contract_dal.Create();
+            if (date > DateTime.Now)
+                return "Ngày đăng ký không hợp lệ !";
+            else
+            {
+                contract_dal.setCONTRACT(cus_id, sim_id, date, fare);
+                contract_dal.Create();
+                    return "Thêm thành công !";
+            }
         }
 
-        public void Delete(string id)
+        public string Delete(string id)
         {
             contract_dal.setCONTRACT(id);
             contract_dal.Delete();
+            return "Xóa thành công !";
         }
 
-        public void Update(string id,string cus_id, int sim_id, DateTime date, int? fare)
+        public string Update(string id,string cus_id, int sim_id, DateTime date, int? fare)
         {
-            contract_dal.setCONTRACT(id,cus_id, sim_id, date, fare);
-            contract_dal.Update();
+            if (date > DateTime.Now)
+                return "Ngày đăng ký không hợp lệ !";
+            else
+            {
+                contract_dal.setCONTRACT(id, cus_id, sim_id, date, fare);
+                contract_dal.Update();
+                return "Đã lưu thay đổi !";
+            }
         }
     }
 }

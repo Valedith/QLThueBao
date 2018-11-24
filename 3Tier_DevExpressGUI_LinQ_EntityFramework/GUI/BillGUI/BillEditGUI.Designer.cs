@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.cb_CusId = new System.Windows.Forms.ComboBox();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -44,18 +45,19 @@
             this.num_Postage = new System.Windows.Forms.NumericUpDown();
             this.num_Minutes = new System.Windows.Forms.NumericUpDown();
             this.date_Export = new System.Windows.Forms.DateTimePicker();
+            this.txt_fare = new System.Windows.Forms.TextBox();
+            this.txt_datecut = new System.Windows.Forms.TextBox();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txt_fare = new System.Windows.Forms.TextBox();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txt_datecut = new System.Windows.Forms.TextBox();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cb_CusId = new System.Windows.Forms.ComboBox();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -93,6 +95,14 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(790, 530);
             this.dataLayoutControl1.TabIndex = 0;
             // 
+            // cb_CusId
+            // 
+            this.cb_CusId.FormattingEnabled = true;
+            this.cb_CusId.Location = new System.Drawing.Point(118, 66);
+            this.cb_CusId.Name = "cb_CusId";
+            this.cb_CusId.Size = new System.Drawing.Size(660, 21);
+            this.cb_CusId.TabIndex = 13;
+            // 
             // txt_id
             // 
             this.txt_id.Location = new System.Drawing.Point(118, 12);
@@ -129,9 +139,11 @@
             this.bbiSaveAndNew,
             this.bbiReset,
             this.bbiDelete,
-            this.bbiClose});
+            this.bbiClose,
+            this.btn_backtoMain,
+            this.btn_logOut});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 10;
+            this.mainRibbonControl.MaxItemId = 12;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -142,7 +154,7 @@
             // 
             // bbiSave
             // 
-            this.bbiSave.Caption = "Save";
+            this.bbiSave.Caption = "Lưu thay đổi";
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
@@ -150,7 +162,7 @@
             // 
             // bbiSaveAndClose
             // 
-            this.bbiSaveAndClose.Caption = "Save And Close";
+            this.bbiSaveAndClose.Caption = "Lưu và thoát";
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
@@ -158,7 +170,7 @@
             // 
             // bbiSaveAndNew
             // 
-            this.bbiSaveAndNew.Caption = "Save And New";
+            this.bbiSaveAndNew.Caption = "Lưu và làm mới";
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
@@ -166,14 +178,14 @@
             // 
             // bbiReset
             // 
-            this.bbiReset.Caption = "Reset Changes";
+            this.bbiReset.Caption = "Làm mới";
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
             // 
             // bbiDelete
             // 
-            this.bbiDelete.Caption = "Delete";
+            this.bbiDelete.Caption = "Xóa dữ liệu";
             this.bbiDelete.Id = 6;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
@@ -181,7 +193,7 @@
             // 
             // bbiClose
             // 
-            this.bbiClose.Caption = "Close";
+            this.bbiClose.Caption = "Thoát";
             this.bbiClose.Id = 7;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
@@ -193,7 +205,7 @@
             this.mainRibbonPageGroup});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Home";
+            this.mainRibbonPage.Text = "Thao tác";
             // 
             // mainRibbonPageGroup
             // 
@@ -203,10 +215,11 @@
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiDelete);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_backtoMain);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.btn_logOut);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.ShowCaptionButton = false;
-            this.mainRibbonPageGroup.Text = "Tasks";
             // 
             // num_Postage
             // 
@@ -243,6 +256,22 @@
             this.date_Export.Name = "date_Export";
             this.date_Export.Size = new System.Drawing.Size(660, 21);
             this.date_Export.TabIndex = 6;
+            // 
+            // txt_fare
+            // 
+            this.txt_fare.Location = new System.Drawing.Point(118, 229);
+            this.txt_fare.Name = "txt_fare";
+            this.txt_fare.ReadOnly = true;
+            this.txt_fare.Size = new System.Drawing.Size(660, 20);
+            this.txt_fare.TabIndex = 12;
+            // 
+            // txt_datecut
+            // 
+            this.txt_datecut.Location = new System.Drawing.Point(118, 337);
+            this.txt_datecut.Name = "txt_datecut";
+            this.txt_datecut.ReadOnly = true;
+            this.txt_datecut.Size = new System.Drawing.Size(660, 20);
+            this.txt_datecut.TabIndex = 12;
             // 
             // layoutControlGroup1
             // 
@@ -310,14 +339,6 @@
             this.layoutControlItem5.Text = "Mã hóa đơn tính cước";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(103, 13);
             // 
-            // txt_fare
-            // 
-            this.txt_fare.Location = new System.Drawing.Point(118, 229);
-            this.txt_fare.Name = "txt_fare";
-            this.txt_fare.ReadOnly = true;
-            this.txt_fare.Size = new System.Drawing.Size(660, 20);
-            this.txt_fare.TabIndex = 12;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txt_fare;
@@ -328,14 +349,6 @@
             this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
             this.layoutControlItem6.Text = "Cước phí hàng tháng";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(103, 13);
-            // 
-            // txt_datecut
-            // 
-            this.txt_datecut.Location = new System.Drawing.Point(118, 337);
-            this.txt_datecut.Name = "txt_datecut";
-            this.txt_datecut.ReadOnly = true;
-            this.txt_datecut.Size = new System.Drawing.Size(660, 20);
-            this.txt_datecut.TabIndex = 12;
             // 
             // layoutControlItem8
             // 
@@ -348,14 +361,6 @@
             this.layoutControlItem8.Text = "Ngày cắt";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(103, 13);
             // 
-            // cb_CusId
-            // 
-            this.cb_CusId.FormattingEnabled = true;
-            this.cb_CusId.Location = new System.Drawing.Point(118, 66);
-            this.cb_CusId.Name = "cb_CusId";
-            this.cb_CusId.Size = new System.Drawing.Size(660, 21);
-            this.cb_CusId.TabIndex = 13;
-            // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.cb_CusId;
@@ -365,6 +370,22 @@
             this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
             this.layoutControlItem9.Text = "Mã khách hàng";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(103, 13);
+            // 
+            // btn_backtoMain
+            // 
+            this.btn_backtoMain.Caption = "Trở về trang chính";
+            this.btn_backtoMain.Id = 10;
+            this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
+            this.btn_backtoMain.Name = "btn_backtoMain";
+            this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
+            // 
+            // btn_logOut
+            // 
+            this.btn_logOut.Caption = "Đăng xuất";
+            this.btn_logOut.Id = 11;
+            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
+            this.btn_logOut.Name = "btn_logOut";
+            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_logOut_ItemClick);
             // 
             // BillEditGUI
             // 
@@ -376,6 +397,7 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "BillEditGUI";
             this.Ribbon = this.mainRibbonControl;
+            this.Text = "Thay đổi dữ liệu hóa đơn";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -427,5 +449,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private System.Windows.Forms.ComboBox cb_CusId;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
+        private DevExpress.XtraBars.BarButtonItem btn_logOut;
     }
 }

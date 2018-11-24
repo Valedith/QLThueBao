@@ -285,6 +285,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public\MD5Hash.cs" />
+    <Compile Include="Public\MessageBoxManager.cs" />
     <Compile Include="Public\RandomGenerator.cs" />
     <EmbeddedResource Include="GUI\BillGUI\BillCreateInfoGUI.resx">
       <DependentUpon>BillCreateInfoGUI.cs</DependentUpon>

@@ -22,7 +22,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
         SimBUS sim = new SimBUS();
         public SimEditGUI()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            cb_status_Load();
+        }
+        private void cb_status_Load()
+        {
+            cb_status.SelectedItem = null;
+            cb_status.Text = "Hãy chọn tình trạng Sim";
         }
         private void gridControl1_Load(object sender, EventArgs e)
         {
@@ -33,47 +39,131 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             ((GridView)gridControl1.MainView).Columns[2].Caption = "Tình trạng";
             ((GridView)gridControl1.MainView).Columns[3].Visible = false;
             ((GridView)gridControl1.MainView).Columns[4].Visible = false;
+            Reset();
         }
-
+        private void Reset()
+        {
+            txt_id.Text = ""; txt_phone.Text = "";
+            cb_status.SelectedItem = null;
+            cb_status.Text = "Hãy chọn tình trạng Sim";
+        }
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             txt_id.Text = gridView1.GetFocusedRowCellValue("ID_SIM").ToString();
             txt_phone.Text = gridView1.GetFocusedRowCellValue("PHONENUMBER").ToString();
-            txt_status.Text = gridView1.GetFocusedRowCellValue("STATUS").ToString();
+            if (Convert.ToInt32(gridView1.GetFocusedRowCellValue("STATUS")) == 1)
+                cb_status.SelectedItem = "Đã kích hoạt";
+            else
+                cb_status.SelectedItem = "Chưa kích hoạt";
         }
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sim.Update(Convert.ToInt32(txt_id.Text),Convert.ToInt32(txt_phone.Text), Convert.ToInt32(txt_status));
-            gridControl1.DataSource = sim.GetAll();
+            if (cb_status.SelectedItem == null)
+                MessageBox.Show("Vui lòng chọn tình trạng Sim phù hợp");
+            else if (txt_phone.Text == "")
+                MessageBox.Show("Số điện thoại không hợp lệ !");
+            else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                gridControl1.DataSource = sim.GetAll();
+            }
+            else
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                gridControl1.DataSource = sim.GetAll();
+            }
+
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), Convert.ToInt32(txt_status));
-            this.Dispose();
+            if (cb_status.SelectedItem == null)
+                MessageBox.Show("Vui lòng chọn tình trạng Sim phù hợp");
+            else if (txt_phone.Text == "")
+                MessageBox.Show("Số điện thoại không hợp lệ !");
+            else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                gridControl1.DataSource = sim.GetAll();
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                gridControl1.DataSource = sim.GetAll();
+                this.Dispose();
+            }
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), Convert.ToInt32(txt_status));
-            txt_id.Text = "";txt_phone.Text = "";txt_status.Text = "";
+            if (cb_status.SelectedItem == null)
+                MessageBox.Show("Vui lòng chọn tình trạng Sim phù hợp");
+            else if (txt_phone.Text == "")
+                MessageBox.Show("Số điện thoại không hợp lệ !");
+            else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                gridControl1.DataSource = sim.GetAll();
+                Reset();
+            }
+            else
+            {
+                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                gridControl1.DataSource = sim.GetAll();
+                Reset();
+            }
         }
 
         private void bbiReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txt_id.Text = ""; txt_phone.Text = ""; txt_status.Text = "";
+            Reset();
         }
 
         private void bbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sim.Delete(Convert.ToInt32(txt_id.Text));
-            gridControl1.DataSource = sim.GetAll();
+            if (txt_id.Text == "")
+                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
+            else
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
+                                            "Xác nhận xóa dữ liệu",
+                                            MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    MessageBox.Show(sim.Delete(Convert.ToInt32(txt_id.Text)));
+                    gridControl1.DataSource = sim.GetAll();
+                    Reset();
+                }
+            }
         }
 
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_Logout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void txt_phone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

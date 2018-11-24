@@ -39,8 +39,19 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.CustomersGUI
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            customer.Delete(gridView.GetFocusedRowCellValue("ID_CUSTOMER").ToString());
-            gridControl.DataSource = customer.GetAll();
+            if (gridView.GetFocusedRowCellValue("ID_CUSTOMER") == null)
+                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
+            else
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
+                                            "Xác nhận xóa dữ liệu",
+                                            MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    customer.Delete(gridView.GetFocusedRowCellValue("ID_CUSTOMER").ToString());
+                    gridControl.DataSource = customer.GetAll();
+                }
+            }
         }
 
         private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
@@ -53,6 +64,30 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.CustomersGUI
         {
             CustomersCreateInfoGUI cus_create = new CustomersCreateInfoGUI();
             cus_create.Visible = true;
-        }        
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void btn_Close_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btn_Refresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridControl.DataSource = customer.GetAll();
+        }
     }
 }

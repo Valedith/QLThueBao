@@ -54,14 +54,49 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            fare.Delete(Convert.ToInt32(gridView.GetFocusedRowCellValue("ID").ToString()));
-            gridControl.DataSource = fare.GetAll();
+            if (gridView.GetFocusedRowCellValue("ID") == null)
+                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
+            else
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
+                                            "Xác nhận xóa dữ liệu",
+                                            MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    MessageBox.Show(fare.Delete(Convert.ToInt32(gridView.GetFocusedRowCellValue("ID").ToString())));
+                    gridControl.DataSource = fare.GetAll();
+                }
+            }
         }
 
         private void btn_Import_ItemClick(object sender, ItemClickEventArgs e)
         {
             FareImportGUI fareimport = new FareImportGUI();
             fareimport.Visible = true;
+        }
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void btn_Close_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btn_Refresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridControl.DataSource = fare.GetAll();
         }
     }
 }

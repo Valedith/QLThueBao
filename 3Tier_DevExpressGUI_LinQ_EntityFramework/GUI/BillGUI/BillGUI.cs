@@ -58,6 +58,29 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
             bill.Delete(gridView.GetFocusedRowCellValue("ID_BILL").ToString());
             gridControl.DataSource = bill.GetAll();
         }
-        
+
+        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MainGUI main = new MainGUI();
+            main.Show();
+            this.Hide();
+        }
+
+        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void btn_Close_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btn_Refresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridControl.DataSource = bill.GetAll();
+        }
     }
 }

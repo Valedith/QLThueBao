@@ -14,22 +14,36 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return customer_dal.GetAll();
         }
-        public void Create(string name, int identity,string job,string position,string address)
+        public string Create(string name, int identity,string job,string position,string address)
         {
-            customer_dal.setCustomer(name, identity, job, position, address);
-            customer_dal.Create();
+            
+            if (identity.ToString().Length != 9 && identity.ToString().Length != 12)
+                return "Số CMND không hợp lệ";
+            else
+            {
+                customer_dal.setCustomer(name, identity, job, position, address);
+                customer_dal.Create();
+                return "Thêm thành công !";
+            }
         }
 
-        public void Delete(string id)
+        public string Delete(string id)
         {
             customer_dal.setCustomer(id);
             customer_dal.Delete();
+                return "Xóa thành công !";
         }
 
-        public void Update(string id,string name, int identity, string job, string position, string address)
+        public string Update(string id,string name, int identity, string job, string position, string address)
         {
-            customer_dal.setCustomer(id, name, identity, job, position, address);
-            customer_dal.Update();
+            if (identity.ToString().Length != 9 && identity.ToString().Length != 12)
+                return "Số CMND không hợp lệ";
+            else
+            {
+                customer_dal.setCustomer(id, name, identity, job, position, address);
+                customer_dal.Update();
+                return "Đã lưu thay đổi !";
+            }
         }
         public IEnumerable<CUSTOMER> SearchByName(string name)
         {

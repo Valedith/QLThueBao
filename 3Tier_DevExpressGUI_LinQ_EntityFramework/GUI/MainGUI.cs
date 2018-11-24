@@ -44,7 +44,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI
 
         private void tileBarItem4_ItemClick(object sender, TileItemEventArgs e)
         {
-            GUI.ContractGUI.ContractGUI contract = new GUI.ContractGUI.ContractGUI();
+            GUI.ContractGUI.CustomerCreateInfoGUI contract = new GUI.ContractGUI.CustomerCreateInfoGUI();
             contract.Visible = true;
         }
 
