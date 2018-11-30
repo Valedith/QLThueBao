@@ -15,9 +15,14 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
     public partial class Test : Form
     {
         FareBUS fare = new FareBUS();
+        DetailBUS detail = new DetailBUS();
+        int temp_range = 0, min_ins = 0, min_out = 0, rs_min_ins = 0, rs_min_out = 0;
+        TimeSpan start1, end1;
+        DateTime date2 = new DateTime(1996, 12, 6, 13, 2, 45);
+        DateTime date3 = new DateTime(1996, 10, 12, 8, 42, 0);
         public Test()
         {
-            InitializeComponent();
+            InitializeComponent(); time_Init();
         }
 
         ContractBUS contract = new ContractBUS();
@@ -27,23 +32,33 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
             MessageBox.Show(contract.getFare("KH02").ToString());
             */
         }
-        private void callculate_minutes(TimeSpan a,TimeSpan b)
+        private void time_Init()
         {
-            //BEFORE <= ; AFTER >
+            temp_range = Convert.ToInt32(Math.Truncate(fare.getbeginTime("NIGHT").TotalMinutes - fare.getbeginTime("DAY").TotalMinutes));
+            start1 = fare.getbeginTime("DAY");
+            end1 = fare.getbeginTime("NIGHT");
+            if (temp_range > 0)
+            {
+                min_ins = temp_range;
+                min_out = 1440 - temp_range;
+            }
+            else
+            {
+                min_out = -temp_range;
+                min_ins = 1440 + temp_range;
+            }
+        }
+        private void split_date()
+        {
+            rs_min_ins = 0; rs_min_out = 0;
 
-            //if a before 7 
-                            
-                //if b before 23 then b-7* + 7-a*
-
-                //if b after 23 then b-23* + 7-a* + 23-7*
-
-            //if a after 7 
-
-                //if b before 23 then b-a*
-
-                //if b after 23 then 23-a* + b-a*
-
-            // for each list ?
+            detail.calculate_time(date2, date3, temp_range, min_ins, min_out, start1, end1, rs_min_ins, rs_min_out);
+            MessageBox.Show(end1.ToString());
+            MessageBox.Show(start1.ToString());
+            MessageBox.Show(date2.TimeOfDay.ToString());
+            MessageBox.Show(rs_min_ins.ToString());
+            MessageBox.Show(rs_min_out.ToString());
+            MessageBox.Show(Convert.ToInt32(Math.Truncate((start1-date2.TimeOfDay).TotalMinutes)).ToString());
         }
         // Show customer the table of minute use in each bill !
         private void gridControl1_Load(object sender, EventArgs e)
@@ -96,7 +111,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            DateTime date2 = new DateTime(1996, 12, 6, 13, 2, 0);
+            DateTime date2 = new DateTime(1996, 12, 6, 13, 2, 45);
             DateTime date3 = new DateTime(1996, 10, 12, 8, 42, 0);
             /*
             double minutes_betweentimes;
@@ -123,12 +138,14 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
                 minutes = minutes - 1440;
             }
 
-            MessageBox.Show(fulldays.ToString());
+            var test = date2.TimeOfDay - date3.TimeOfDay;
+
+            MessageBox.Show(Math.Truncate(minutes).ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // import table ?
+            split_date();
         }
     }
 }

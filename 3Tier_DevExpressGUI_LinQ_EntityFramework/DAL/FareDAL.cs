@@ -105,7 +105,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         {
             return (TimeSpan) db.FAREs.Where(c => c.ID_FARE == id).Select(c=> c.TIME_START).SingleOrDefault();
         }
-
+        public int getFare1(string id)
+        {
+            return (int)db.FAREs.Where(c => c.ID_FARE == id).Select(c => c.FARE1).SingleOrDefault();
+        }
         public void Update()
         {
             var edited_fare = db.FAREs.First(p => p.ID_FARE == fare.ID_FARE);

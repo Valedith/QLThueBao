@@ -10,7 +10,6 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
     class DetailBUS
     {
         DetailDAL detail_dal = new DetailDAL();
-        FareBUS fare = new FareBUS();
         public IEnumerable<DETAIL> GetAll()
         {
             return detail_dal.GetAll();
@@ -41,12 +40,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
             detail_dal.Create();
             return "Nhập dữ liệu từ file thành công !";
         }
-        public void calculate_time(DateTime start,DateTime end)
+        public void calculate_time(DateTime start,DateTime end,int temp_range,int min_ins,int min_out,TimeSpan start1,TimeSpan end1,int rs_min_ins,int rs_min_out)
         {
+            //
             var minutes_subtract = start.Subtract(end).TotalMinutes;
             if (minutes_subtract < 0)
                 minutes_subtract = -minutes_subtract;
-
+            //
             int fulldays=0;
             while (minutes_subtract > 1440)
             {
@@ -54,34 +54,54 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
                 minutes_subtract = minutes_subtract - 1440;
             }
             
-            /*
-            //get full day between stop and start
-            var fulldays = start.Day - end.Day;
-            //calculate min after first time span and the other time span
-            double minutes_betweentimes;
-            double minutes_therest;
-            if (fulldays==0)
+
+            rs_min_ins = min_ins * fulldays;
+            rs_min_out = min_out * fulldays;
+            
+            //BEFORE < ; AFTER >
+
+            //if a before s 
+
+            //if b before e then b-s* + s-a*
+
+            //if b after e then b-e* + s-a* + e-s*
+
+            //if a after s 
+
+            //if b before e then b-a*
+
+            //if b after e then e-a* + b-e*
+
+            var a = start.TimeOfDay;
+            var b = end.TimeOfDay;
+            var s = start1;
+            var e = end1;
+            var subtract = Math.Abs(end1.TotalMinutes - start1.TotalMinutes);
+            if (a < s)
             {
-                if(fulldays)
-                minutes_betweentimes = 0;
-                minutes_therest = 0;
-            }
-            var temp_range = fare.getbeginTime("DAY").TotalMinutes - fare.getbeginTime("NIGHT").TotalMinutes;
-            if (temp_range > 0)
-            {
-                minutes_betweentimes = -temp_range;
-                minutes_therest = 1440 + temp_range;
+                if (b < e)
+                {
+                    rs_min_ins += Convert.ToInt32(Math.Truncate(b.TotalMinutes - s.TotalMinutes));
+                    rs_min_out += Convert.ToInt32(Math.Truncate(s.TotalMinutes - a.TotalMinutes));
+                }
+                else
+                {
+                    rs_min_out += Convert.ToInt32(Math.Truncate(b.TotalMinutes - e.TotalMinutes)) + Convert.ToInt32(Math.Truncate(s.TotalMinutes - a.TotalMinutes));
+                    rs_min_ins += Convert.ToInt32(Math.Truncate(subtract));
+                }
             }
             else
             {
-                minutes_therest = -temp_range;
-                minutes_betweentimes = 1440 + temp_range;
+                if (b < e)
+                {
+                    rs_min_ins += Convert.ToInt32(Math.Truncate(b.TotalMinutes - a.TotalMinutes));
+                }
+                else
+                {
+                    rs_min_ins += Convert.ToInt32(Math.Truncate(e.TotalMinutes - a.TotalMinutes));
+                    rs_min_out += Convert.ToInt32(Math.Truncate(b.TotalMinutes - e.TotalMinutes));
+                }
             }
-
-            var between_timerange = fare.getbeginTime("DAY") - fare.getbeginTime("NIGHT");
-            //var min_day = fulldays * fare.getbeginTime("DAY");
-            //var min_night = fulldays * fare.getbeginTime("NIGHT");
-            */
         }
     }
 }
