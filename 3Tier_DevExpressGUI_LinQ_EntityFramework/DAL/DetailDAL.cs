@@ -126,21 +126,5 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
 
             db.Entry(detail).State = EntityState.Detached;
         }
-        /*
-        public void Update()
-        {
-            var edited_customer = db.CUSTOMERs.First(p => p.ID_CUSTOMER == customer.ID_CUSTOMER);
-
-            edited_customer.NAME = customer.NAME;
-            edited_customer.IDENTIFY = customer.IDENTIFY;
-            edited_customer.JOB = customer.JOB;
-            edited_customer.POSITION = customer.POSITION;
-            edited_customer.ADDRESS = customer.ADDRESS;
-
-            db.SaveChanges();
-
-            db.Entry(customer).State = EntityState.Detached;
-        }
-        */
     }
 }

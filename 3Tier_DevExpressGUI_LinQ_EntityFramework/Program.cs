@@ -28,7 +28,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework
             MessageBoxManager.Yes = "Có";
             MessageBoxManager.No = "Không";
             MessageBoxManager.Register();
-            Application.Run(new FareEditGUI());
+            Application.Run(new Test());
         }
     }
 }

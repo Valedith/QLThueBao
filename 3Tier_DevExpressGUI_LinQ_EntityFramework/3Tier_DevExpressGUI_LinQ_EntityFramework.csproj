@@ -231,29 +231,17 @@
     <Compile Include="GUI\CustomersGUI\CustomersGUI.Designer.cs">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DetailGUI\DetailGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DetailGUI\DetailGUI.Designer.cs">
-      <DependentUpon>DetailGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\DetailGUI\DetailEditGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DetailGUI\DetailEditGUI.Designer.cs">
-      <DependentUpon>DetailEditGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\DetailGUI\DetailCreateInfoGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DetailGUI\DetailCreateInfoGUI.Designer.cs">
-      <DependentUpon>DetailCreateInfoGUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\DetailGUI\DetailImportGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\DetailGUI\DetailImportGUI.Designer.cs">
       <DependentUpon>DetailImportGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailGUI.Designer.cs">
+      <DependentUpon>DetailGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\FareGUI\FareGUI.cs">
       <SubType>Form</SubType>
@@ -266,12 +254,6 @@
     </Compile>
     <Compile Include="GUI\FareGUI\FareEditGUI.Designer.cs">
       <DependentUpon>FareEditGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FareGUI\FareImportGUI - Delete this.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\FareGUI\FareImportGUI - Delete this.Designer.cs">
-      <DependentUpon>FareImportGUI - Delete this.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login.cs">
       <SubType>Form</SubType>
@@ -347,12 +329,6 @@
     <EmbeddedResource Include="GUI\CustomersGUI\CustomersGUI.resx">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DetailGUI\DetailCreateInfoGUI.resx">
-      <DependentUpon>DetailCreateInfoGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DetailGUI\DetailEditGUI.resx">
-      <DependentUpon>DetailEditGUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DetailGUI\DetailGUI.resx">
       <DependentUpon>DetailGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,9 +340,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FareGUI\FareGUI.resx">
       <DependentUpon>FareGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FareGUI\FareImportGUI - Delete this.resx">
-      <DependentUpon>FareImportGUI - Delete this.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

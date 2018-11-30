@@ -34,7 +34,6 @@
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiSaveAndNew = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Browse = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Random = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
@@ -85,7 +84,6 @@
             this.mainRibbonControl.ExpandCollapseItem,
             this.bbiSave,
             this.bbiSaveAndClose,
-            this.bbiSaveAndNew,
             this.btn_Browse,
             this.btn_Random,
             this.bbiClose});
@@ -114,14 +112,6 @@
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
             this.bbiSaveAndClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
-            // 
-            // bbiSaveAndNew
-            // 
-            this.bbiSaveAndNew.Caption = "Lưu và làm mới";
-            this.bbiSaveAndNew.Id = 4;
-            this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
-            this.bbiSaveAndNew.Name = "bbiSaveAndNew";
-            this.bbiSaveAndNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndNew_ItemClick);
             // 
             // btn_Browse
             // 
@@ -160,7 +150,6 @@
             this.mainRibbonPageGroup.AllowTextClipping = false;
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSave);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndClose);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
             this.mainRibbonPageGroup.ItemLinks.Add(this.btn_Browse);
             this.mainRibbonPageGroup.ItemLinks.Add(this.btn_Random);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
@@ -219,7 +208,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup mainRibbonPageGroup;
         private DevExpress.XtraBars.BarButtonItem bbiSave;
         private DevExpress.XtraBars.BarButtonItem bbiSaveAndClose;
-        private DevExpress.XtraBars.BarButtonItem bbiSaveAndNew;
         private DevExpress.XtraBars.BarButtonItem btn_Browse;
         private DevExpress.XtraBars.BarButtonItem btn_Random;
         private DevExpress.XtraBars.BarButtonItem bbiClose;

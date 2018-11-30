@@ -101,7 +101,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
             List<FARE> fare = db.FAREs.ToList();
             return fare;
         }
-
+        public TimeSpan getbeginTime(string id)
+        {
+            return (TimeSpan) db.FAREs.Where(c => c.ID_FARE == id).Select(c=> c.TIME_START).SingleOrDefault();
+        }
 
         public void Update()
         {

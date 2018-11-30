@@ -14,6 +14,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return fare_dal.GetAll();
         }
+        public TimeSpan getbeginTime(string id)
+        {
+            return fare_dal.getbeginTime(id);
+        }
         /*
         private void filteringDate(int id_sim,TimeSpan start,TimeSpan end)
         {

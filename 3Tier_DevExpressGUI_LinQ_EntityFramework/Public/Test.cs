@@ -14,6 +14,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
 {
     public partial class Test : Form
     {
+        FareBUS fare = new FareBUS();
         public Test()
         {
             InitializeComponent();
@@ -95,7 +96,34 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            // read and import
+            DateTime date2 = new DateTime(1996, 12, 6, 13, 2, 0);
+            DateTime date3 = new DateTime(1996, 10, 12, 8, 42, 0);
+            /*
+            double minutes_betweentimes;
+            double minutes_therest;
+            var temp_range = fare.getbeginTime("DAY").TotalMinutes - fare.getbeginTime("NIGHT").TotalMinutes;
+            if (temp_range > 0)
+            {
+                minutes_betweentimes = -temp_range;
+                minutes_therest = 1440 + temp_range;
+            }
+            else
+            {
+                minutes_therest = -temp_range;
+                minutes_betweentimes = 1440 + temp_range;
+            }
+            */
+            var minutes = date3.Subtract(date2).TotalMinutes;
+            if (minutes < 0)
+                minutes = -minutes;
+            int fulldays = 0;
+            while (minutes > 1440)
+            {
+                fulldays++;
+                minutes = minutes - 1440;
+            }
+
+            MessageBox.Show(fulldays.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)
