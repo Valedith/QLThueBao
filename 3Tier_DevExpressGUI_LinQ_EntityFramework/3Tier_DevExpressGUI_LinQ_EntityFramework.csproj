@@ -109,9 +109,13 @@
     <Compile Include="BUS\BillBUS.cs" />
     <Compile Include="BUS\ContractBUS.cs" />
     <Compile Include="BUS\CustomerBUS.cs" />
+    <Compile Include="BUS\DetailBUS.cs" />
     <Compile Include="BUS\FareBUS.cs" />
     <Compile Include="BUS\SimBUS.cs" />
-    <Compile Include="DAL\Admin.cs">
+    <Compile Include="DAL\ACCOUNT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ADMIN.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\AdminDAL.cs" />
@@ -127,10 +131,15 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CustomerDAL.cs" />
+    <Compile Include="DAL\DETAIL.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DetailDAL.cs" />
     <Compile Include="DAL\FARE.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\FareDAL.cs" />
+    <Compile Include="DAL\Minutetable.cs" />
     <Compile Include="DAL\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +231,30 @@
     <Compile Include="GUI\CustomersGUI\CustomersGUI.Designer.cs">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DetailGUI\DetailGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailGUI.Designer.cs">
+      <DependentUpon>DetailGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailEditGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailEditGUI.Designer.cs">
+      <DependentUpon>DetailEditGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailCreateInfoGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailCreateInfoGUI.Designer.cs">
+      <DependentUpon>DetailCreateInfoGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailImportGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailGUI\DetailImportGUI.Designer.cs">
+      <DependentUpon>DetailImportGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FareGUI\FareGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,17 +267,11 @@
     <Compile Include="GUI\FareGUI\FareEditGUI.Designer.cs">
       <DependentUpon>FareEditGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FareGUI\FareCreateInfoGUI.cs">
+    <Compile Include="GUI\FareGUI\FareImportGUI - Delete this.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FareGUI\FareCreateInfoGUI.Designer.cs">
-      <DependentUpon>FareCreateInfoGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FareGUI\FareImportGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\FareGUI\FareImportGUI.Designer.cs">
-      <DependentUpon>FareImportGUI.cs</DependentUpon>
+    <Compile Include="GUI\FareGUI\FareImportGUI - Delete this.Designer.cs">
+      <DependentUpon>FareImportGUI - Delete this.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login.cs">
       <SubType>Form</SubType>
@@ -287,6 +314,12 @@
     <Compile Include="Public\MD5Hash.cs" />
     <Compile Include="Public\MessageBoxManager.cs" />
     <Compile Include="Public\RandomGenerator.cs" />
+    <Compile Include="Public\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUI\BillGUI\BillCreateInfoGUI.resx">
       <DependentUpon>BillCreateInfoGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,8 +347,17 @@
     <EmbeddedResource Include="GUI\CustomersGUI\CustomersGUI.resx">
       <DependentUpon>CustomersGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FareGUI\FareCreateInfoGUI.resx">
-      <DependentUpon>FareCreateInfoGUI.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DetailGUI\DetailCreateInfoGUI.resx">
+      <DependentUpon>DetailCreateInfoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DetailGUI\DetailEditGUI.resx">
+      <DependentUpon>DetailEditGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DetailGUI\DetailGUI.resx">
+      <DependentUpon>DetailGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DetailGUI\DetailImportGUI.resx">
+      <DependentUpon>DetailImportGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FareGUI\FareEditGUI.resx">
       <DependentUpon>FareEditGUI.cs</DependentUpon>
@@ -323,8 +365,8 @@
     <EmbeddedResource Include="GUI\FareGUI\FareGUI.resx">
       <DependentUpon>FareGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FareGUI\FareImportGUI.resx">
-      <DependentUpon>FareImportGUI.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\FareGUI\FareImportGUI - Delete this.resx">
+      <DependentUpon>FareImportGUI - Delete this.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -351,6 +393,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Public\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="DAL\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>

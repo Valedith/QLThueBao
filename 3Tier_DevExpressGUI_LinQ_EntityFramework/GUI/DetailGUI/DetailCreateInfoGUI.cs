@@ -13,49 +13,53 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Helpers;
 using _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS;
-using DevExpress.XtraBars;
 
-namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
+namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
 {
-    public partial class ContractCreateInfoGUI : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class DetailCreateInfoGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        ContractBUS contract = new ContractBUS();
-        CustomerBUS customer = new CustomerBUS();
         SimBUS sim = new SimBUS();
-        public ContractCreateInfoGUI()
+        DetailBUS detail = new DetailBUS();
+        public DetailCreateInfoGUI()
         {
             InitializeComponent();
-            cb_sim_Load();
+            dtp_start.Format = DateTimePickerFormat.Custom;
+            dtp_start.CustomFormat = "MM/dd/yyyy hh:mm:ss";
 
+            dtp_stop.Format = DateTimePickerFormat.Custom;
+            dtp_stop.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            cb_sim_Load();
         }
+
         private void cb_sim_Load()
         {
-            cb_SimId.DataSource = sim.GetAll().AsEnumerable().Select(row => new
+            cb_Sim.DataSource = sim.GetAll().AsEnumerable().Select(row => new
             {
                 Text = String.Format("{0,5} | {1,5} | {2,5} |", row.ID_SIM, row.PHONENUMBER, row.STATUS),
                 Value = row.ID_SIM
             }).ToList();
 
-            cb_SimId.DisplayMember = "Text";
-            cb_SimId.ValueMember = "Value";
+            cb_Sim.DisplayMember = "Text";
+            cb_Sim.ValueMember = "Value";
 
-            cb_SimId.SelectedItem = null;
-            cb_SimId.Text = "Mã sim | Số điện thoại | Tình trạng";
+            cb_Sim.SelectedItem = null;
+            cb_Sim.Text = "Mã sim | Số điện thoại | Tình trạng";
+
         }
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(contract.Create(cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(detail.Create(cb_Sim.SelectedValue.ToString(), dtp_start.Value, dtp_stop.Value));
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(contract.Create(cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(detail.Create(cb_Sim.SelectedValue.ToString(), dtp_start.Value, dtp_stop.Value));
             this.Dispose();
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(contract.Create(cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(detail.Create(cb_Sim.SelectedValue.ToString(), dtp_start.Value, dtp_stop.Value));
             Reset();
         }
 
@@ -65,28 +69,28 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
         }
         private void Reset()
         {
-            cb_SimId.SelectedItem = null;
-            cb_SimId.Text = "Mã sim | Số điện thoại | Tình trạng";
+            cb_Sim.SelectedItem = null;
+            cb_Sim.Text = "Mã sim | Số điện thoại | Tình trạng";
 
-            date_Register.Value = DateTime.Now; num_Fare.Value = 50000;
+            dtp_start.Value = DateTime.Now; dtp_stop.Value = DateTime.Now;
         }
-        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void btn_backtoMain_ItemClick(object sender, ItemClickEventArgs e)
+        private void btn_backtoMain_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MainGUI main = new MainGUI();
             main.Show();
             this.Hide();
         }
 
-        private void btn_logOut_ItemClick(object sender, ItemClickEventArgs e)
+        private void btn_Logout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

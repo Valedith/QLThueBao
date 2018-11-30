@@ -15,13 +15,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     public partial class BILL
     {
         public string ID_BILL { get; set; }
-        public string ID_CUSTOMER { get; set; }
-        public Nullable<int> USE_MINUTE { get; set; }
+        public string ID_SIM { get; set; }
         public Nullable<System.DateTime> DATE_EXPORT { get; set; }
         public Nullable<System.DateTime> DATE_CUT { get; set; }
         public Nullable<int> POSTAGE { get; set; }
         public Nullable<int> FARE { get; set; }
+        public Nullable<bool> STATUS { get; set; }
     
-        public virtual CUSTOMER CUSTOMER { get; set; }
+        public virtual SIM SIM { get; set; }
     }
 }

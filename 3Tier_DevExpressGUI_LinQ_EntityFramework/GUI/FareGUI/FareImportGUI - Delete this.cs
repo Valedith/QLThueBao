@@ -18,6 +18,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
 {
     public partial class FareImportGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        /*
         FareBUS fare = new FareBUS();
         public FareImportGUI()
         {
@@ -153,5 +154,6 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
         {
             this.Dispose();
         }
+        */
     }
 }

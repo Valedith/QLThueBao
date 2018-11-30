@@ -28,10 +28,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             gridControl.DataSource = sim.GetAll();
             gridControl.MainView.PopulateColumns();
             ((GridView)gridControl.MainView).Columns[0].Caption = "Mã sim";
-            ((GridView)gridControl.MainView).Columns[1].Caption = "Số điện thoại";
-            ((GridView)gridControl.MainView).Columns[2].Caption = "Tình trạng";
-            ((GridView)gridControl.MainView).Columns[3].Visible = false;
+            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã khách hàng";
+            ((GridView)gridControl.MainView).Columns[2].Caption = "Số điện thoại";
+            ((GridView)gridControl.MainView).Columns[3].Caption = "Tình trạng";
             ((GridView)gridControl.MainView).Columns[4].Visible = false;
+            ((GridView)gridControl.MainView).Columns[5].Visible = false;
+            ((GridView)gridControl.MainView).Columns[6].Visible = false;
         }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
@@ -57,7 +59,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                                             MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(sim.Delete(Convert.ToInt32(gridView.GetFocusedRowCellValue("ID_SIM"))));
+                    MessageBox.Show(sim.Delete(gridView.GetFocusedRowCellValue("ID_SIM").ToString()));
                     gridControl.DataSource = sim.GetAll();
                 }
             }

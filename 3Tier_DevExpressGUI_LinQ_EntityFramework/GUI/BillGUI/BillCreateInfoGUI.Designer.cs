@@ -35,36 +35,35 @@
             this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.date_Export = new System.Windows.Forms.DateTimePicker();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.num_Minutes = new System.Windows.Forms.NumericUpDown();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.num_Postage = new System.Windows.Forms.NumericUpDown();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txt_datecut = new System.Windows.Forms.TextBox();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txt_fare = new System.Windows.Forms.TextBox();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cb_CusId = new System.Windows.Forms.ComboBox();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
+            this.txt_fare = new System.Windows.Forms.TextBox();
+            this.num_Postage = new System.Windows.Forms.NumericUpDown();
+            this.date_Export = new System.Windows.Forms.DateTimePicker();
+            this.cb_status = new System.Windows.Forms.ComboBox();
+            this.cb_Sim = new System.Windows.Forms.ComboBox();
+            this.txt_datecut = new System.Windows.Forms.TextBox();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Minutes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Postage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Postage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
@@ -137,6 +136,22 @@
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
+            // btn_backtoMain
+            // 
+            this.btn_backtoMain.Caption = "Trở về trang chính";
+            this.btn_backtoMain.Id = 10;
+            this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
+            this.btn_backtoMain.Name = "btn_backtoMain";
+            this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
+            // 
+            // btn_logOut
+            // 
+            this.btn_logOut.Caption = "Đăng xuất";
+            this.btn_logOut.Id = 11;
+            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
+            this.btn_logOut.Name = "btn_logOut";
+            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_logOut_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -164,136 +179,25 @@
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4,
-            this.layoutControlItem7,
-            this.layoutControlItem1,
             this.layoutControlItem8,
-            this.layoutControlItem6,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(790, 452);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.date_Export;
-            this.layoutControlItem4.CustomizationFormText = "Ngày sử dụng";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 217);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(770, 54);
-            this.layoutControlItem4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem4.Text = "Ngày sử dụng";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // date_Export
-            // 
-            this.date_Export.Location = new System.Drawing.Point(144, 259);
-            this.date_Export.Name = "date_Export";
-            this.date_Export.Size = new System.Drawing.Size(634, 21);
-            this.date_Export.TabIndex = 6;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.num_Minutes;
-            this.layoutControlItem7.CustomizationFormText = "Số phút sử dụng";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 55);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(770, 54);
-            this.layoutControlItem7.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem7.Text = "Số phút sử dụng";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // num_Minutes
-            // 
-            this.num_Minutes.Location = new System.Drawing.Point(144, 97);
-            this.num_Minutes.Name = "num_Minutes";
-            this.num_Minutes.Size = new System.Drawing.Size(634, 21);
-            this.num_Minutes.TabIndex = 9;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.num_Postage;
-            this.layoutControlItem1.CustomizationFormText = "Cước thuê bao hàng tháng";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 109);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(770, 54);
-            this.layoutControlItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem1.Text = "Cước thuê bao hàng tháng";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // num_Postage
-            // 
-            this.num_Postage.Location = new System.Drawing.Point(144, 151);
-            this.num_Postage.Name = "num_Postage";
-            this.num_Postage.Size = new System.Drawing.Size(634, 21);
-            this.num_Postage.TabIndex = 10;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.txt_datecut;
-            this.layoutControlItem8.CustomizationFormText = "Ngày cắt";
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 271);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(770, 161);
-            this.layoutControlItem8.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem8.Text = "Ngày cắt";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // txt_datecut
-            // 
-            this.txt_datecut.Location = new System.Drawing.Point(144, 313);
-            this.txt_datecut.Name = "txt_datecut";
-            this.txt_datecut.ReadOnly = true;
-            this.txt_datecut.Size = new System.Drawing.Size(634, 20);
-            this.txt_datecut.TabIndex = 12;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.txt_fare;
-            this.layoutControlItem6.CustomizationFormText = "Cước phí hàng tháng";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 163);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(770, 54);
-            this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem6.Text = "Cước phí hàng tháng";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // txt_fare
-            // 
-            this.txt_fare.Location = new System.Drawing.Point(144, 205);
-            this.txt_fare.Name = "txt_fare";
-            this.txt_fare.ReadOnly = true;
-            this.txt_fare.Size = new System.Drawing.Size(634, 20);
-            this.txt_fare.TabIndex = 12;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.cb_CusId;
-            this.layoutControlItem9.CustomizationFormText = "Mã khách hàng";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(770, 55);
-            this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
-            this.layoutControlItem9.Text = "Mã khách hàng";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(129, 13);
-            // 
-            // cb_CusId
-            // 
-            this.cb_CusId.FormattingEnabled = true;
-            this.cb_CusId.Location = new System.Drawing.Point(144, 42);
-            this.cb_CusId.Name = "cb_CusId";
-            this.cb_CusId.Size = new System.Drawing.Size(634, 21);
-            this.cb_CusId.TabIndex = 13;
-            // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.AllowCustomization = false;
             this.dataLayoutControl1.Controls.Add(this.date_Export);
-            this.dataLayoutControl1.Controls.Add(this.num_Minutes);
-            this.dataLayoutControl1.Controls.Add(this.num_Postage);
-            this.dataLayoutControl1.Controls.Add(this.txt_fare);
             this.dataLayoutControl1.Controls.Add(this.txt_datecut);
-            this.dataLayoutControl1.Controls.Add(this.cb_CusId);
+            this.dataLayoutControl1.Controls.Add(this.cb_Sim);
+            this.dataLayoutControl1.Controls.Add(this.num_Postage);
+            this.dataLayoutControl1.Controls.Add(this.cb_status);
+            this.dataLayoutControl1.Controls.Add(this.txt_fare);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 143);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -301,21 +205,130 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(790, 452);
             this.dataLayoutControl1.TabIndex = 0;
             // 
-            // btn_backtoMain
+            // txt_fare
             // 
-            this.btn_backtoMain.Caption = "Trở về trang chính";
-            this.btn_backtoMain.Id = 10;
-            this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
-            this.btn_backtoMain.Name = "btn_backtoMain";
-            this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
+            this.txt_fare.Location = new System.Drawing.Point(115, 314);
+            this.txt_fare.Name = "txt_fare";
+            this.txt_fare.ReadOnly = true;
+            this.txt_fare.Size = new System.Drawing.Size(663, 20);
+            this.txt_fare.TabIndex = 12;
             // 
-            // btn_logOut
+            // num_Postage
             // 
-            this.btn_logOut.Caption = "Đăng xuất";
-            this.btn_logOut.Id = 11;
-            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
-            this.btn_logOut.Name = "btn_logOut";
-            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_logOut_ItemClick);
+            this.num_Postage.Location = new System.Drawing.Point(115, 205);
+            this.num_Postage.Maximum = new decimal(new int[] {
+            -1593835521,
+            466537709,
+            54210,
+            0});
+            this.num_Postage.Name = "num_Postage";
+            this.num_Postage.Size = new System.Drawing.Size(663, 21);
+            this.num_Postage.TabIndex = 7;
+            this.num_Postage.Value = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            // 
+            // date_Export
+            // 
+            this.date_Export.Location = new System.Drawing.Point(115, 97);
+            this.date_Export.Name = "date_Export";
+            this.date_Export.Size = new System.Drawing.Size(663, 21);
+            this.date_Export.TabIndex = 6;
+            // 
+            // cb_status
+            // 
+            this.cb_status.FormattingEnabled = true;
+            this.cb_status.Items.AddRange(new object[] {
+            "Đã kích hoạt",
+            "Chưa kích hoạt"});
+            this.cb_status.Location = new System.Drawing.Point(115, 259);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(663, 21);
+            this.cb_status.TabIndex = 7;
+            // 
+            // cb_Sim
+            // 
+            this.cb_Sim.FormattingEnabled = true;
+            this.cb_Sim.Location = new System.Drawing.Point(115, 42);
+            this.cb_Sim.Name = "cb_Sim";
+            this.cb_Sim.Size = new System.Drawing.Size(663, 21);
+            this.cb_Sim.TabIndex = 13;
+            // 
+            // txt_datecut
+            // 
+            this.txt_datecut.Location = new System.Drawing.Point(115, 151);
+            this.txt_datecut.Name = "txt_datecut";
+            this.txt_datecut.ReadOnly = true;
+            this.txt_datecut.Size = new System.Drawing.Size(663, 20);
+            this.txt_datecut.TabIndex = 12;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.date_Export;
+            this.layoutControlItem4.CustomizationFormText = "Ngày xuất phiếu";
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 55);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(770, 54);
+            this.layoutControlItem4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem4.Text = "Ngày xuất phiếu";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.txt_datecut;
+            this.layoutControlItem8.CustomizationFormText = "Ngày cắt";
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 109);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(770, 54);
+            this.layoutControlItem8.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem8.Text = "Ngày cắt";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.cb_Sim;
+            this.layoutControlItem9.CustomizationFormText = "Mã Sim";
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(770, 55);
+            this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem9.Text = "Mã Sim";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.num_Postage;
+            this.layoutControlItem1.CustomizationFormText = "Phí đăng ký";
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 163);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(770, 54);
+            this.layoutControlItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem1.Text = "Cước phí";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.cb_status;
+            this.layoutControlItem2.CustomizationFormText = "Tình trạng";
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 217);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(770, 55);
+            this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem2.Text = "Tình trạng";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(100, 13);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.txt_fare;
+            this.layoutControlItem6.CustomizationFormText = "Cước phí hàng tháng";
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 272);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(770, 160);
+            this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem6.Text = "Cước phí hàng tháng";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(100, 13);
             // 
             // BillCreateInfoGUI
             // 
@@ -330,16 +343,15 @@
             this.Text = "Thêm dữ liệu hóa đơn mới";
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Minutes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Postage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.num_Postage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,19 +369,19 @@
         private DevExpress.XtraBars.BarButtonItem bbiClose;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private System.Windows.Forms.DateTimePicker date_Export;
-        private System.Windows.Forms.NumericUpDown num_Minutes;
-        private System.Windows.Forms.NumericUpDown num_Postage;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private System.Windows.Forms.TextBox txt_fare;
-        private System.Windows.Forms.TextBox txt_datecut;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private System.Windows.Forms.ComboBox cb_CusId;
         private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
         private DevExpress.XtraBars.BarButtonItem btn_logOut;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private System.Windows.Forms.DateTimePicker date_Export;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private System.Windows.Forms.TextBox txt_datecut;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private System.Windows.Forms.ComboBox cb_Sim;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private System.Windows.Forms.NumericUpDown num_Postage;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private System.Windows.Forms.ComboBox cb_status;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private System.Windows.Forms.TextBox txt_fare;
     }
 }

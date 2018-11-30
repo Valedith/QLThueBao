@@ -14,19 +14,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return fare_dal.GetAll();
         }
-        public string Create(int id_sim, TimeSpan start, TimeSpan end)
-        {
-            if (start == null)
-                return "Vui lòng nhập thời gian bắt đầu !";
-            else if (end == null)
-                return "Vui lòng nhập thời gian kết thúc !";
-            else
-            {
-                filteringDate(id_sim, start, end);
-                fare_dal.Create();
-                return "Thêm thành công !";
-            }
-        }
+        /*
         private void filteringDate(int id_sim,TimeSpan start,TimeSpan end)
         {
             TimeSpan start_7 = new TimeSpan(7, 00, 00);
@@ -87,13 +75,8 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
             fare_dal.Create();
             return "Nhập dữ liệu từ file thành công !";
         }
-        public string Delete(int id)
-        {
-            fare_dal.setFare(id);
-            fare_dal.Delete();
-            return "Xóa thành công !";
-        }
-
+        */
+        /*
         public string Update(int id,int id_sim, TimeSpan start, TimeSpan end)
         {
             if (start == null)
@@ -106,6 +89,18 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
                 fare_dal.Update();
                 return "Đã lưu thay đổi !";
             }
+        }
+        */
+        public string Update(string id,int fare1,TimeSpan start,TimeSpan stop)
+        {
+                fare_dal.setFare(id,fare1,start,stop);
+                fare_dal.Update();
+                return "Đã lưu thay đổi !";
+        }
+        public void Update_rest(string id, TimeSpan start, TimeSpan stop)
+        {
+            fare_dal.setFare(id, start, stop);
+            fare_dal.Update_rest();
         }
     }
 }

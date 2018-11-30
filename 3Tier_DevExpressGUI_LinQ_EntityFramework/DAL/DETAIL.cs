@@ -12,11 +12,16 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class FARE
+    public partial class DETAIL
     {
-        public string ID_FARE { get; set; }
-        public Nullable<System.TimeSpan> TIME_START { get; set; }
-        public Nullable<System.TimeSpan> TIME_STOP { get; set; }
-        public Nullable<int> FARE1 { get; set; }
+        public int ID { get; set; }
+        public string ID_SIM { get; set; }
+        public Nullable<System.DateTime> TIME_START { get; set; }
+        public Nullable<System.DateTime> TIME_STOP { get; set; }
+        public Nullable<int> MINUTE_AFTER7 { get; set; }
+        public Nullable<int> MINUTE_AFTER23 { get; set; }
+        public Nullable<int> FARE { get; set; }
+    
+        public virtual SIM SIM { get; set; }
     }
 }

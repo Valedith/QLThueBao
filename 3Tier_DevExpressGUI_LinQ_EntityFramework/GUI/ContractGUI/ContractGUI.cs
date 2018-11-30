@@ -32,12 +32,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
             gridControl.DataSource = contract.GetAll();
             gridControl.MainView.PopulateColumns();
             ((GridView)gridControl.MainView).Columns[0].Caption = "Mã hợp đồng";
-            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã khách hàng";
-            ((GridView)gridControl.MainView).Columns[2].Caption = "Mã Sim";
-            ((GridView)gridControl.MainView).Columns[3].Caption = "Ngày đăng ký";
-            ((GridView)gridControl.MainView).Columns[4].Caption = "Thuế hàng tháng";
-            ((GridView)gridControl.MainView).Columns[5].Visible = false;
-            ((GridView)gridControl.MainView).Columns[6].Visible = false;
+            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã Sim";
+            ((GridView)gridControl.MainView).Columns[2].Caption = "Ngày đăng ký";
+            ((GridView)gridControl.MainView).Columns[3].Caption = "Phí đăng ký";
+            ((GridView)gridControl.MainView).Columns[4].Visible = false;
         }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)

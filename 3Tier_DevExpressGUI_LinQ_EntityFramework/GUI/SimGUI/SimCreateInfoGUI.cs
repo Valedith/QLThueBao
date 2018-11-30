@@ -19,10 +19,26 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
     public partial class SimCreateInfoGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         SimBUS sim = new SimBUS();
+        CustomerBUS customer = new CustomerBUS();
         public SimCreateInfoGUI()
         {
             InitializeComponent();
             cb_status_Load();
+            cb_customer_Load();
+        }
+        private void cb_customer_Load()
+        {
+            cb_CusId.DataSource = customer.GetAll().AsEnumerable().Select(row => new
+            {
+                Text = String.Format("{0,5} | {1,5} | {2,5} | {3,5} | {4,5}  ", row.ID_CUSTOMER, row.NAME, row.IDENTIFY, row.POSITION, row.ADDRESS),
+                Value = row.ID_CUSTOMER
+            }).ToList();
+
+            cb_CusId.DisplayMember = "Text";
+            cb_CusId.ValueMember = "Value";
+
+            cb_CusId.SelectedItem = null;
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
         private void cb_status_Load()
         {
@@ -38,6 +54,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             txt_phone.Text = "";
             cb_status.SelectedItem = null;
             cb_status.Text = "Hãy chọn tình trạng Sim";
+
+            cb_CusId.SelectedItem = null;
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -46,9 +65,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             else if (txt_phone.Text == "")
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(),Convert.ToInt32(txt_phone.Text), false));
             else
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -59,12 +78,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
             {
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), false));
                 this.Dispose();
             }
             else
             {
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
                 this.Dispose();
             }
 
@@ -78,12 +97,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
             {
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), false));
                 Reset();
             }
             else
             {
-                MessageBox.Show(sim.Create(Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
                 Reset();
             }
         }

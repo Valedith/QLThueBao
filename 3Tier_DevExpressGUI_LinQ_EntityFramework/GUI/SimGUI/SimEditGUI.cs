@@ -20,15 +20,31 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
     public partial class SimEditGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         SimBUS sim = new SimBUS();
+        CustomerBUS customer = new CustomerBUS();
         public SimEditGUI()
         {
             InitializeComponent();
             cb_status_Load();
+            cb_customer_Load();
         }
         private void cb_status_Load()
         {
             cb_status.SelectedItem = null;
             cb_status.Text = "Hãy chọn tình trạng Sim";
+        }
+        private void cb_customer_Load()
+        {
+            cb_CusId.DataSource = customer.GetAll().AsEnumerable().Select(row => new
+            {
+                Text = String.Format("{0,5} | {1,5} | {2,5} | {3,5} | {4,5}  ", row.ID_CUSTOMER, row.NAME, row.IDENTIFY, row.POSITION, row.ADDRESS),
+                Value = row.ID_CUSTOMER
+            }).ToList();
+
+            cb_CusId.DisplayMember = "Text";
+            cb_CusId.ValueMember = "Value";
+
+            cb_CusId.SelectedItem = null;
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
         private void gridControl1_Load(object sender, EventArgs e)
         {
@@ -46,11 +62,15 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             txt_id.Text = ""; txt_phone.Text = "";
             cb_status.SelectedItem = null;
             cb_status.Text = "Hãy chọn tình trạng Sim";
+
+            cb_CusId.SelectedItem = null;
+            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             txt_id.Text = gridView1.GetFocusedRowCellValue("ID_SIM").ToString();
             txt_phone.Text = gridView1.GetFocusedRowCellValue("PHONENUMBER").ToString();
+            cb_CusId.SelectedValue = gridView1.GetFocusedRowCellValue("ID_CUSTOMER").ToString();
             if (Convert.ToInt32(gridView1.GetFocusedRowCellValue("STATUS")) == 1)
                 cb_status.SelectedItem = "Đã kích hoạt";
             else
@@ -65,12 +85,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Update(txt_id.Text,cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), false));
                 gridControl1.DataSource = sim.GetAll();
             }
             else
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
                 gridControl1.DataSource = sim.GetAll();
             }
 
@@ -84,13 +104,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), false));
                 gridControl1.DataSource = sim.GetAll();
                 this.Dispose();
             }
             else
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
                 gridControl1.DataSource = sim.GetAll();
                 this.Dispose();
             }
@@ -104,13 +124,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             else if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 0));
+                MessageBox.Show(sim.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), false));
                 gridControl1.DataSource = sim.GetAll();
                 Reset();
             }
             else
             {
-                MessageBox.Show(sim.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(txt_phone.Text), 1));
+                MessageBox.Show(sim.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(txt_phone.Text), true));
                 gridControl1.DataSource = sim.GetAll();
                 Reset();
             }
@@ -132,7 +152,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
                                             MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(sim.Delete(Convert.ToInt32(txt_id.Text)));
+                    MessageBox.Show(sim.Delete(txt_id.Text));
                     gridControl1.DataSource = sim.GetAll();
                     Reset();
                 }

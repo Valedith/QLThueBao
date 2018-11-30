@@ -11,23 +11,21 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     {
         QLYCUOCDTEntities db = new QLYCUOCDTEntities();
         CONTRACT contract = new CONTRACT();
-        public void setCONTRACT(string cus_id,int sim_id,DateTime date,int? fare)
+        public void setCONTRACT(String sim_id,DateTime date,int? fee)
         {
-            this.contract.ID_CUSTOMER = cus_id;
             this.contract.ID_SIM = sim_id;
-            this.contract.FARE = fare;
+            this.contract.FEE = fee;
             this.contract.DATEREGISTER = date;
         }
         public void setCONTRACT(string id)
         {
             this.contract.ID_CONTRACT = id;
         }
-        public void setCONTRACT(string id, string cus_id, int sim_id,DateTime date, int? fare)
+        public void setCONTRACT(string id, string sim_id,DateTime date, int? fee)
         {
             this.contract.ID_CONTRACT = id;
-            this.contract.ID_CUSTOMER = cus_id;
             this.contract.ID_SIM = sim_id;
-            this.contract.FARE = fare;
+            this.contract.FEE = fee;
             this.contract.DATEREGISTER = date;
         }
         public IEnumerable<CONTRACT> GetAll()
@@ -64,15 +62,37 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
 
             db.Entry(contract).State = EntityState.Detached;
         }
-
-
+        /*
+        public IEnumerable<Minutetable> get_useMinuteList()
+        {
+            var query = db.CONTRACTs
+                 .Join(db.FAREs,
+                       con => con.ID_SIM,
+                       fa => fa.ID_SIM,
+                       (con, fa) => new { con, fa })
+                 .Join(db.SIMs,
+                       com => com.con.ID_SIM,
+                       sim => sim.ID_SIM,
+                       (com, sim) => new { com, sim })
+                 .Where(z => z.com.con.ID_CUSTOMER == contract.ID_CUSTOMER)
+                 .Select(z => new Minutetable
+                 {
+                     ID_CUSTOMER = z.com.con.ID_CUSTOMER,
+                     ID_SIM = (int)z.com.con.ID_SIM,
+                     TIME_STARTA7 = z.com.fa.TIME_STARTA7,
+                     TIME_STARTB7 = z.com.fa.TIME_STARTB7,
+                     TIME_STOPA23 = z.com.fa.TIME_STOPA23,
+                     TIME_STOPB23 = z.com.fa.TIME_STOPB23
+                 });
+            return query.ToList();            
+        }
+        */
         public void Update()
         {
             var edited_contract = db.CONTRACTs.First(p => p.ID_CONTRACT == contract.ID_CONTRACT);
 
             edited_contract.ID_SIM = contract.ID_SIM;
-            edited_contract.ID_CUSTOMER = contract.ID_CUSTOMER;
-            edited_contract.FARE = contract.FARE;
+            edited_contract.FEE = contract.FEE;
             edited_contract.DATEREGISTER = contract.DATEREGISTER;
 
             db.SaveChanges();

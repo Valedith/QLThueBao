@@ -50,6 +50,8 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.cb_CusId = new System.Windows.Forms.ComboBox();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonPage
@@ -177,34 +180,34 @@
             this.cb_status.Items.AddRange(new object[] {
             "Đã kích hoạt",
             "Chưa kích hoạt"});
-            this.cb_status.Location = new System.Drawing.Point(77, 150);
+            this.cb_status.Location = new System.Drawing.Point(87, 205);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(701, 21);
+            this.cb_status.Size = new System.Drawing.Size(691, 21);
             this.cb_status.TabIndex = 7;
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(77, 42);
+            this.txt_id.Location = new System.Drawing.Point(87, 42);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(701, 20);
+            this.txt_id.Size = new System.Drawing.Size(691, 20);
             this.txt_id.TabIndex = 5;
             // 
             // txt_phone
             // 
-            this.txt_phone.Location = new System.Drawing.Point(77, 96);
+            this.txt_phone.Location = new System.Drawing.Point(87, 151);
             this.txt_phone.Name = "txt_phone";
-            this.txt_phone.Size = new System.Drawing.Size(701, 20);
+            this.txt_phone.Size = new System.Drawing.Size(691, 20);
             this.txt_phone.TabIndex = 5;
             this.txt_phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_phone_KeyPress);
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 175);
+            this.gridControl1.Location = new System.Drawing.Point(12, 230);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.mainRibbonControl;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(766, 265);
+            this.gridControl1.Size = new System.Drawing.Size(766, 210);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -224,7 +227,8 @@
             this.layoutControlItem2,
             this.layoutControlItem1,
             this.layoutControlItem4,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem9});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(790, 452);
@@ -234,12 +238,12 @@
             // 
             this.layoutControlItem2.Control = this.txt_phone;
             this.layoutControlItem2.CustomizationFormText = "Số điện thoại";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 54);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 109);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(770, 54);
             this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
             this.layoutControlItem2.Text = "Số điện thoại";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(62, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(72, 13);
             // 
             // layoutControlItem1
             // 
@@ -250,14 +254,14 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(770, 54);
             this.layoutControlItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
             this.layoutControlItem1.Text = "Mã Sim";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(62, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(72, 13);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.gridControl1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 163);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 218);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(770, 269);
+            this.layoutControlItem4.Size = new System.Drawing.Size(770, 214);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -265,12 +269,12 @@
             // 
             this.layoutControlItem3.Control = this.cb_status;
             this.layoutControlItem3.CustomizationFormText = "Tình trạng";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 108);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 163);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(770, 55);
             this.layoutControlItem3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
             this.layoutControlItem3.Text = "Tình trạng";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(62, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(72, 13);
             // 
             // dataLayoutControl1
             // 
@@ -279,6 +283,7 @@
             this.dataLayoutControl1.Controls.Add(this.txt_phone);
             this.dataLayoutControl1.Controls.Add(this.txt_id);
             this.dataLayoutControl1.Controls.Add(this.cb_status);
+            this.dataLayoutControl1.Controls.Add(this.cb_CusId);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 143);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -286,6 +291,25 @@
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
             this.dataLayoutControl1.Size = new System.Drawing.Size(790, 452);
             this.dataLayoutControl1.TabIndex = 0;
+            // 
+            // cb_CusId
+            // 
+            this.cb_CusId.FormattingEnabled = true;
+            this.cb_CusId.Location = new System.Drawing.Point(87, 96);
+            this.cb_CusId.Name = "cb_CusId";
+            this.cb_CusId.Size = new System.Drawing.Size(691, 21);
+            this.cb_CusId.TabIndex = 13;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.cb_CusId;
+            this.layoutControlItem9.CustomizationFormText = "Mã khách hàng";
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 54);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(770, 55);
+            this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 30, 0);
+            this.layoutControlItem9.Text = "Mã khách hàng";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(72, 13);
             // 
             // SimEditGUI
             // 
@@ -308,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,5 +361,7 @@
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
         private DevExpress.XtraBars.BarButtonItem btn_logOut;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private System.Windows.Forms.ComboBox cb_CusId;
     }
 }

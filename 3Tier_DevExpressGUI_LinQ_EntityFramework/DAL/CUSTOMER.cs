@@ -17,8 +17,8 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER()
         {
-            this.BILLs = new HashSet<BILL>();
-            this.CONTRACTs = new HashSet<CONTRACT>();
+            this.ACCOUNTs = new HashSet<ACCOUNT>();
+            this.SIMs = new HashSet<SIM>();
         }
     
         public string ID_CUSTOMER { get; set; }
@@ -29,8 +29,8 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         public string ADDRESS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL> BILLs { get; set; }
+        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONTRACT> CONTRACTs { get; set; }
+        public virtual ICollection<SIM> SIMs { get; set; }
     }
 }

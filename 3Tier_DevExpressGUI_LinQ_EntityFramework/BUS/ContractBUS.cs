@@ -14,13 +14,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return contract_dal.GetAll();
         }
-        public string Create(string cus_id, int sim_id, DateTime date, int? fare)
+        public string Create(string sim_id, DateTime date, int? fee)
         {
             if (date > DateTime.Now)
                 return "Ngày đăng ký không hợp lệ !";
             else
             {
-                contract_dal.setCONTRACT(cus_id, sim_id, date, fare);
+                contract_dal.setCONTRACT(sim_id, date, fee);
                 contract_dal.Create();
                     return "Thêm thành công !";
             }
@@ -32,14 +32,20 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
             contract_dal.Delete();
             return "Xóa thành công !";
         }
-
-        public string Update(string id,string cus_id, int sim_id, DateTime date, int? fare)
+        /*
+        public IEnumerable<Minutetable> get_useMinuteList(string id)
+        {
+            contract_dal.setCONTRACT_cus(id);
+            return contract_dal.get_useMinuteList();
+        }
+        */
+        public string Update(string id,string sim_id, DateTime date, int? fee)
         {
             if (date > DateTime.Now)
                 return "Ngày đăng ký không hợp lệ !";
             else
             {
-                contract_dal.setCONTRACT(id, cus_id, sim_id, date, fare);
+                contract_dal.setCONTRACT(id, sim_id, date, fee);
                 contract_dal.Update();
                 return "Đã lưu thay đổi !";
             }

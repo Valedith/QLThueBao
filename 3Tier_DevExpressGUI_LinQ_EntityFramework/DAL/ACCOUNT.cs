@@ -12,11 +12,16 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class FARE
+    public partial class ACCOUNT
     {
-        public string ID_FARE { get; set; }
-        public Nullable<System.TimeSpan> TIME_START { get; set; }
-        public Nullable<System.TimeSpan> TIME_STOP { get; set; }
-        public Nullable<int> FARE1 { get; set; }
+        public string EMAIL { get; set; }
+        public string ID_CUSTOMER { get; set; }
+        public string PASSWORD { get; set; }
+        public string CONFIRMPASSWORD { get; set; }
+        public Nullable<bool> ISEMAILVERIFY { get; set; }
+        public Nullable<System.Guid> ACTIVATIONCODE { get; set; }
+        public string RESETPASSWORDCODE { get; set; }
+    
+        public virtual CUSTOMER CUSTOMER { get; set; }
     }
 }

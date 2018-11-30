@@ -12,10 +12,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class ADMIN
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public int ID { get; set; }
+        public string USERNAME { get; set; }
+        public string PASSWORD { get; set; }
     }
 }

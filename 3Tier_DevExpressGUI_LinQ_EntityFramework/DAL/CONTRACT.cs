@@ -15,12 +15,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     public partial class CONTRACT
     {
         public string ID_CONTRACT { get; set; }
-        public string ID_CUSTOMER { get; set; }
-        public Nullable<int> ID_SIM { get; set; }
+        public string ID_SIM { get; set; }
         public Nullable<System.DateTime> DATEREGISTER { get; set; }
-        public Nullable<int> FARE { get; set; }
+        public Nullable<int> FEE { get; set; }
     
-        public virtual CUSTOMER CUSTOMER { get; set; }
         public virtual SIM SIM { get; set; }
     }
 }

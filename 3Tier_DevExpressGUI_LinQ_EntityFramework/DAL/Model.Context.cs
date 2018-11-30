@@ -25,11 +25,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual DbSet<ADMIN> ADMINs { get; set; }
         public virtual DbSet<BILL> BILLs { get; set; }
         public virtual DbSet<CONTRACT> CONTRACTs { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
+        public virtual DbSet<DETAIL> DETAILs { get; set; }
         public virtual DbSet<FARE> FAREs { get; set; }
         public virtual DbSet<SIM> SIMs { get; set; }
-        public virtual DbSet<Admin> Admins { get; set; }
     }
 }

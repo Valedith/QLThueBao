@@ -14,9 +14,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
         {
             return bill_dal.GetAll();
         }
-        public void Create(string id_cus, int? minutes, DateTime? date_ex, DateTime? date_cut, int? postage, int? fare)
+        public void Create(string id_sim, DateTime date_ex, DateTime date_cut, int postage, int fare, bool status)
         {
-            bill_dal.setBill(id_cus, minutes, date_ex, date_cut, postage, fare);
+            bill_dal.setBill(id_sim, date_ex, date_cut, postage, fare,status);
             bill_dal.Create();
         }
 
@@ -26,9 +26,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS
             bill_dal.Delete();
         }
 
-        public void Update(string id,string id_cus, int minutes, DateTime date_ex, DateTime date_cut, int postage, int fare)
+        public void Update(string id, string id_sim, DateTime date_ex, DateTime date_cut, int postage, int fare, bool status)
         {
-            bill_dal.setBill(id,id_cus, minutes, date_ex, date_cut, postage, fare);
+            bill_dal.setBill(id, id_sim, date_ex, date_cut, postage, fare, status);
             bill_dal.Update();
         }
     }

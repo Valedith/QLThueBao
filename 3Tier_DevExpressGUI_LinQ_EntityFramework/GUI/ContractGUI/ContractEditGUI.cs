@@ -26,17 +26,16 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
         {
             InitializeComponent();
             date_Register.CustomFormat = "dd-MM-yyyy";
-            cb_customer_Load();
             cb_sim_Load();
         }
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             txt_id.Text = gridView1.GetFocusedRowCellValue("ID_CONTRACT").ToString();
-            cb_CusId.SelectedValue = gridView1.GetFocusedRowCellValue("ID_CUSTOMER").ToString();
-            cb_SimId.SelectedValue = Convert.ToInt32(gridView1.GetFocusedRowCellValue("ID_SIM").ToString());
+            cb_SimId.SelectedValue = gridView1.GetFocusedRowCellValue("ID_SIM").ToString();
             date_Register.Value = DateTime.Parse(gridView1.GetFocusedRowCellValue("DATEREGISTER").ToString());
             num_Fare.Value = Convert.ToInt32(gridView1.GetFocusedRowCellValue("FARE"));
         }
+        /*
         private void cb_customer_Load()
         {
             cb_CusId.DataSource = customer.GetAll().AsEnumerable().Select(row => new
@@ -51,6 +50,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
             cb_CusId.SelectedItem = null;
             cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
         }
+        */
         private void cb_sim_Load()
         {
             cb_SimId.DataSource = sim.GetAll().AsEnumerable().Select(row => new
@@ -71,31 +71,29 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
             gridControl1.DataSource = contract.GetAll();
             gridControl1.MainView.PopulateColumns();
             ((GridView)gridControl1.MainView).Columns[0].Caption = "Mã hợp đồng";
-            ((GridView)gridControl1.MainView).Columns[1].Caption = "Mã khách hàng";
-            ((GridView)gridControl1.MainView).Columns[2].Caption = "Mã Sim";
-            ((GridView)gridControl1.MainView).Columns[3].Caption = "Ngày đăng ký";
-            ((GridView)gridControl1.MainView).Columns[4].Caption = "Thuế hàng tháng";
-            ((GridView)gridControl1.MainView).Columns[5].Visible = false;
-            ((GridView)gridControl1.MainView).Columns[6].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[1].Caption = "Mã Sim";
+            ((GridView)gridControl1.MainView).Columns[2].Caption = "Ngày đăng ký";
+            ((GridView)gridControl1.MainView).Columns[3].Caption = "Phí đăng ký";
+            ((GridView)gridControl1.MainView).Columns[4].Visible = false;
             Reset();
         }
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(contract.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(cb_SimId.SelectedValue), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(contract.Update(txt_id.Text, cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
             gridControl1.DataSource = contract.GetAll();
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(contract.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(cb_SimId.SelectedValue), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(contract.Update(txt_id.Text, cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
             this.Dispose();
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            MessageBox.Show(contract.Update(txt_id.Text, cb_CusId.SelectedValue.ToString(), Convert.ToInt32(cb_SimId.SelectedValue), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
+            MessageBox.Show(contract.Update(txt_id.Text, cb_SimId.SelectedValue.ToString(), date_Register.Value, Convert.ToInt32(num_Fare.Value)));
             Reset();
         }
 
@@ -108,8 +106,10 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.ContractGUI
             cb_SimId.SelectedItem = null;
             cb_SimId.Text = "Mã sim | Số điện thoại | Tình trạng";
             
+            /*
             cb_CusId.SelectedItem = null;
             cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
+            */
 
             txt_id.Text = ""; date_Register.Value = DateTime.Now; num_Fare.Value = 50000;
         }

@@ -20,41 +20,66 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
     public partial class BillCreateInfoGUI : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BillBUS bill = new BillBUS();
-        CustomerBUS customer = new CustomerBUS();
+        SimBUS sim = new SimBUS();
         public BillCreateInfoGUI()
         {
             InitializeComponent();
+            date_Export.CustomFormat = "dd-MM-yyyy";
+            cb_sim_Load();
         }
-
-        private void cb_CusId_Load()
+        private void cb_sim_Load()
         {
-            cb_CusId.DataSource = customer.GetAll().AsEnumerable().Select(row => new
+            cb_Sim.DataSource = sim.GetAll().AsEnumerable().Select(row => new
             {
-                Text = String.Format("{0,5} | {1,5} | {2,5} | {3,5} | {4,5}  ", row.ID_CUSTOMER, row.NAME, row.IDENTIFY, row.POSITION, row.ADDRESS),
-                Value = row.ID_CUSTOMER
+                Text = String.Format("{0,5} | {1,5} | {2,5} |", row.ID_SIM, row.PHONENUMBER, row.STATUS),
+                Value = row.ID_SIM
             }).ToList();
 
-            cb_CusId.DisplayMember = "Text";
-            cb_CusId.ValueMember = "Value";
+            cb_Sim.DisplayMember = "Text";
+            cb_Sim.ValueMember = "Value";
 
-            cb_CusId.SelectedItem = null;
-            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
+            cb_Sim.SelectedItem = null;
+            cb_Sim.Text = "Mã sim | Số điện thoại | Tình trạng";
+
         }
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bill.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(num_Minutes.Value), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text));
+            if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), false);
+            }
+            else
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), true);
+            }
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bill.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(num_Minutes.Value), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text));
-            this.Dispose();
+            if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), false);
+                this.Dispose();
+            }
+            else
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), true);
+                this.Dispose();
+            }
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bill.Create(cb_CusId.SelectedValue.ToString(), Convert.ToInt32(num_Minutes.Value), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text));
-            Reset();
+            if (cb_status.SelectedItem.Equals("Chưa kích hoạt"))
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), false);
+                Reset();
+            }
+            else
+            {
+                bill.Create(cb_Sim.SelectedValue.ToString(), date_Export.Value, date_Export.Value.AddDays(30), Convert.ToInt32(num_Postage.Value), Convert.ToInt32(txt_fare.Text), true);
+                Reset();
+            }
         }
 
         private void bbiReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -63,10 +88,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
         }
         private void Reset()
         {
-            cb_CusId.SelectedItem = null;
-            cb_CusId.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
+            cb_Sim.SelectedItem = null;
+            cb_Sim.Text = "Mã khách hàng | Tên khách hàng | CMND | Nghề nghiệp | Địa vị | Địa chỉ";
 
-            num_Minutes.Value = 0; num_Postage.Value = 50000; txt_fare.Text = ""; date_Export.Value = DateTime.Now; txt_datecut.Text = "";
+            cb_status.SelectedItem = null;
+            cb_status.Text = "Hãy chọn tình trạng thanh toán hóa đơn";
+            num_Postage.Value = 50000; txt_fare.Text = ""; date_Export.Value = DateTime.Now; txt_datecut.Text = "";
         }
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

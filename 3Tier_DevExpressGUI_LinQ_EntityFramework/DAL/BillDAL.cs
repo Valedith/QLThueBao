@@ -11,28 +11,28 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     {
         QLYCUOCDTEntities db = new QLYCUOCDTEntities();
         BILL bill = new BILL();
-        public void setBill(string id, string id_cus,int minutes, DateTime date_ex,DateTime date_cut,int postage,int fare)
+        public void setBill(string id, string id_sim, DateTime date_ex,DateTime date_cut,int postage,int fare,bool status)
         {
             this.bill.ID_BILL = id;
-            this.bill.ID_CUSTOMER = id_cus;
-            this.bill.USE_MINUTE = minutes;
+            this.bill.ID_SIM = id_sim;
             this.bill.DATE_EXPORT = date_ex;
             this.bill.DATE_CUT = date_cut;
             this.bill.POSTAGE = postage;
             this.bill.FARE = fare;
+            this.bill.STATUS = status;
         }
-        public void setBill(string id_cus, int? minutes, DateTime? date_ex, DateTime? date_cut,int? postage,int? fare)
+        public void setBill(string id_sim, DateTime date_ex, DateTime date_cut, int postage, int fare, bool status)
         {
-            this.bill.ID_CUSTOMER = id_cus;
-            this.bill.USE_MINUTE = minutes;
+            this.bill.ID_SIM = id_sim;
             this.bill.DATE_EXPORT = date_ex;
             this.bill.DATE_CUT = date_cut;
             this.bill.POSTAGE = postage;
             this.bill.FARE = fare;
+            this.bill.STATUS = status;
         }
         public void setBill(string id)
         {
-            this.bill.ID_CUSTOMER = id;
+            this.bill.ID_BILL = id;
         }
         public IEnumerable<BILL> GetAll()
         {
@@ -74,13 +74,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         {
             var edited_bill = db.BILLs.First(p => p.ID_BILL == bill.ID_BILL);
 
-            edited_bill.ID_BILL = bill.ID_BILL;
-            edited_bill.ID_CUSTOMER = bill.ID_CUSTOMER;
-            edited_bill.USE_MINUTE = bill.USE_MINUTE;
+            edited_bill.ID_SIM = bill.ID_SIM;
             edited_bill.DATE_EXPORT = bill.DATE_EXPORT;
             edited_bill.DATE_CUT = bill.DATE_CUT;
             edited_bill.POSTAGE = bill.POSTAGE;
             edited_bill.FARE = bill.FARE;
+            edited_bill.STATUS = bill.STATUS;
 
             db.SaveChanges();
 

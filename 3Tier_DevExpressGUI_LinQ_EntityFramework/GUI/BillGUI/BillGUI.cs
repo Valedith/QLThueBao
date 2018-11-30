@@ -22,10 +22,6 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
         {
             InitializeComponent();
         }
-        void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            gridControl.ShowRibbonPrintPreview();
-        }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -38,12 +34,12 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
             gridControl.DataSource = bill.GetAll();
             gridControl.MainView.PopulateColumns();
             ((GridView)gridControl.MainView).Columns[0].Caption = "Mã hóa đơn";
-            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã khách hàng";
-            ((GridView)gridControl.MainView).Columns[2].Caption = "Số phút sử dụng";
-            ((GridView)gridControl.MainView).Columns[3].Caption = "Ngày xuất phiếu";
-            ((GridView)gridControl.MainView).Columns[4].Caption = "Ngày cắt";
-            ((GridView)gridControl.MainView).Columns[5].Caption = "Cước thuê bao";
-            ((GridView)gridControl.MainView).Columns[6].Caption = "Cước tháng";
+            ((GridView)gridControl.MainView).Columns[1].Caption = "Mã Sim";
+            ((GridView)gridControl.MainView).Columns[2].Caption = "Ngày xuất phiếu";
+            ((GridView)gridControl.MainView).Columns[3].Caption = "Ngày cắt";
+            ((GridView)gridControl.MainView).Columns[4].Caption = "Cước thuê bao";
+            ((GridView)gridControl.MainView).Columns[5].Caption = "Cước phí hàng tháng";
+            ((GridView)gridControl.MainView).Columns[6].Caption = "Tình trạng";
             ((GridView)gridControl.MainView).Columns[7].Visible = false;
         }
 

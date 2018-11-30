@@ -17,17 +17,22 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SIM()
         {
+            this.BILLs = new HashSet<BILL>();
             this.CONTRACTs = new HashSet<CONTRACT>();
-            this.FAREs = new HashSet<FARE>();
+            this.DETAILs = new HashSet<DETAIL>();
         }
     
-        public int ID_SIM { get; set; }
+        public string ID_SIM { get; set; }
+        public string ID_CUSTOMER { get; set; }
         public Nullable<int> PHONENUMBER { get; set; }
-        public Nullable<int> STATUS { get; set; }
+        public Nullable<bool> STATUS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONTRACT> CONTRACTs { get; set; }
+        public virtual ICollection<BILL> BILLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FARE> FAREs { get; set; }
+        public virtual ICollection<CONTRACT> CONTRACTs { get; set; }
+        public virtual CUSTOMER CUSTOMER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETAIL> DETAILs { get; set; }
     }
 }

@@ -15,6 +15,8 @@ using DevExpress.XtraLayout.Helpers;
 using _3Tier_DevExpressGUI_LinQ_EntityFramework.BUS;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraBars;
+using System.Globalization;
+using DevExpress.XtraEditors.Mask;
 
 namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
 {
@@ -25,73 +27,63 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
         public FareEditGUI()
         {
             InitializeComponent();
-            cb_sim_Load();
-
-            cb_sim.SelectedItem = null;
-            cb_sim.Text = "Mã sim | Số điện thoại | Tình trạng";
+            time_start.Properties.Mask.MaskType = time_stop.Properties.Mask.MaskType = MaskType.DateTime;
+            time_start.Properties.Mask.EditMask = time_stop.Properties.Mask.EditMask = "HH:mm:ss";
+            time_start.MaskBox.Mask.UseMaskAsDisplayFormat = time_stop.MaskBox.Mask.UseMaskAsDisplayFormat = true;
         }
         private void gridControl1_Load(object sender, EventArgs e)
         {
             gridControl1.DataSource = fare.GetAll();
             gridControl1.MainView.PopulateColumns();
             ((GridView)gridControl1.MainView).Columns[0].Caption = "Mã thuế cước";
-            ((GridView)gridControl1.MainView).Columns[1].Caption = "Mã Sim";
-            ((GridView)gridControl1.MainView).Columns[2].Caption = "Thời gian bắt đầu trước 7h";
-            ((GridView)gridControl1.MainView).Columns[3].Caption = "Thời gian bắt đầu sau 7h";
-            ((GridView)gridControl1.MainView).Columns[4].Caption = "Thời gian kết thúc trước 23h";
-            ((GridView)gridControl1.MainView).Columns[5].Caption = "Thời gian kết thúc sau 23h";
-            ((GridView)gridControl1.MainView).Columns[6].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[1].Caption = "Thời gian bắt đầu";
+            ((GridView)gridControl1.MainView).Columns[2].Caption = "Thời gian kết thúc";
+            ((GridView)gridControl1.MainView).Columns[3].Caption = "Giá cước";
             Reset();
-        }
-        private void cb_sim_Load()
-        {
-            cb_sim.DataSource = sim.GetAll().AsEnumerable().Select(row => new
-            {
-                Text = String.Format("{0,5} | {1,5} | {2,5} |", row.ID_SIM, row.PHONENUMBER, row.STATUS),
-                Value = row.ID_SIM
-            }).ToList();
-
-            cb_sim.DisplayMember = "Text";
-            cb_sim.ValueMember = "Value";
         }
         private void Reset()
         {
-            txt_id.Text = "";time_start.EditValue = 0; time_stop.EditValue = 0;
-            cb_sim.SelectedItem = null;
-            cb_sim.Text = "Mã sim | Số điện thoại | Tình trạng";
+            txt_id.Text = "";num_fare.Value = 0;
+            
         }
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            txt_id.Text = gridView1.GetFocusedRowCellValue("ID").ToString();
-            cb_sim.SelectedValue = gridView1.GetFocusedRowCellValue("ID_SIM").ToString();
+            txt_id.Text = gridView1.GetFocusedRowCellValue("ID_FARE").ToString();
+            num_fare.Value = Convert.ToInt32(gridView1.GetFocusedRowCellValue("FARE1").ToString());
+            time_start.EditValue = gridView1.GetFocusedRowCellValue("TIME_START").ToString();
+            time_stop.EditValue = gridView1.GetFocusedRowCellValue("TIME_STOP").ToString();
+            txt_time2start.Text = time_stop.EditValue.ToString();
+            txt_time2stop.Text = time_start.EditValue.ToString();
 
-            if(gridView1.GetFocusedRowCellValue("TIME_STARTA7")==null)
-                time_start.EditValue = gridView1.GetFocusedRowCellValue("TIME_STARTB7");
-            else
-                time_start.EditValue = gridView1.GetFocusedRowCellValue("TIME_STARTA7");
-
-            if (gridView1.GetFocusedRowCellValue("TIME_STOPA23") == null)
-                time_stop.EditValue = gridView1.GetFocusedRowCellValue("TIME_STOPB23");
-            else
-                time_stop.EditValue = gridView1.GetFocusedRowCellValue("TIME_STOPA23");
-            
         }
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(fare.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(cb_sim.SelectedValue), TimeSpan.Parse(time_start.EditValue.ToString()), TimeSpan.Parse(time_stop.EditValue.ToString())));
+            MessageBox.Show(fare.Update(txt_id.Text, Convert.ToInt32(num_fare.Value), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString())));
+            if (txt_id.Text == "DAY")
+                fare.Update_rest("NIGHT", TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()));
+            else
+                fare.Update_rest("DAY", TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()));
             gridControl1.DataSource = fare.GetAll();
         }
 
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(fare.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(cb_sim.SelectedValue), TimeSpan.Parse(time_start.EditValue.ToString()), TimeSpan.Parse(time_stop.EditValue.ToString())));
+            MessageBox.Show(fare.Update(txt_id.Text, Convert.ToInt32(num_fare.Value), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString())));
+            if (txt_id.Text == "DAY")
+                fare.Update_rest("NIGHT", TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()));
+            else
+                fare.Update_rest("DAY", TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()));
             this.Dispose();
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show(fare.Update(Convert.ToInt32(txt_id.Text), Convert.ToInt32(cb_sim.SelectedValue), TimeSpan.Parse(time_start.EditValue.ToString()), TimeSpan.Parse(time_stop.EditValue.ToString())));
+            MessageBox.Show(fare.Update(txt_id.Text, Convert.ToInt32(num_fare.Value), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString())));
+            if (txt_id.Text == "DAY")
+                fare.Update_rest("NIGHT", TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()));
+            else
+                fare.Update_rest("DAY", TimeSpan.Parse(time_start.Time.TimeOfDay.ToString()), TimeSpan.Parse(time_stop.Time.TimeOfDay.ToString()));
             Reset();
         }
 
@@ -99,24 +91,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.FareGUI
         {
             Reset();
         }
-
-        private void bbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (txt_id.Text == "")
-                MessageBox.Show("Hãy chọn dữ liệu để xóa !");
-            else
-            {
-                var confirmResult = MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này ?",
-                                            "Xác nhận xóa dữ liệu",
-                                            MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    MessageBox.Show(fare.Delete(Convert.ToInt32(txt_id.Text)));
-                    gridControl1.DataSource = fare.GetAll();
-                    Reset();
-                }
-            }
-        }
+        
 
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

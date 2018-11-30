@@ -10,17 +10,17 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
     public class AdminDAL
     {
         QLYCUOCDTEntities db = new QLYCUOCDTEntities();
-        Admin admin = new Admin();
+        ADMIN admin = new ADMIN();
         public void setAdmin(string username,string password)
         {
-            this.admin.Username = username;
-            this.admin.Password = password;
+            this.admin.USERNAME = username;
+            this.admin.PASSWORD = password;
         }
         public Boolean adminLogin()
         {
-            string hash_pass = MD5Hash.CreateMD5(admin.Password);
-            var myUser = db.Admins
-                         .FirstOrDefault(u => u.Username == admin.Username && u.Password == hash_pass);
+            string hash_pass = MD5Hash.CreateMD5(admin.PASSWORD);
+            var myUser = db.ADMINs
+                         .FirstOrDefault(u => u.USERNAME == admin.USERNAME && u.PASSWORD == hash_pass);
             if (myUser != null)
             {
                 return true;

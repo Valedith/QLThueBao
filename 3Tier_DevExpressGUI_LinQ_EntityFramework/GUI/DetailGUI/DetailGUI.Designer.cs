@@ -1,6 +1,6 @@
-﻿namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.BillGUI
+﻿namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
 {
-    partial class BillGUI
+    partial class DetailGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -36,14 +36,14 @@
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Import = new DevExpress.XtraBars.BarButtonItem();
             this.btn_backtoMain = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_logOut = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Close = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.btn_useMinutes = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -80,13 +80,13 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.btn_logOut,
+            this.bbiRefresh,
+            this.btn_Import,
             this.btn_backtoMain,
-            this.btn_Close,
-            this.btn_Refresh,
-            this.btn_useMinutes});
+            this.btn_logOut,
+            this.btn_Close});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 25;
+            this.ribbonControl.MaxItemId = 26;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -95,7 +95,12 @@
             this.ribbonControl.Size = new System.Drawing.Size(790, 143);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
-           // 
+            // 
+            // bbiPrintPreview
+            // 
+            this.bbiPrintPreview.Id = 20;
+            this.bbiPrintPreview.Name = "bbiPrintPreview";
+            // 
             // bsiRecordsCount
             // 
             this.bsiRecordsCount.Caption = "RECORDS : 0";
@@ -126,37 +131,45 @@
             this.bbiDelete.Name = "bbiDelete";
             this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
-            // btn_logOut
+            // bbiRefresh
             // 
-            this.btn_logOut.Caption = "Đăng xuất";
-            this.btn_logOut.Id = 20;
-            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
-            this.btn_logOut.Name = "btn_logOut";
-            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_logOut_ItemClick);
+            this.bbiRefresh.Caption = "Làm mới";
+            this.bbiRefresh.Id = 19;
+            this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
+            this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
+            // 
+            // btn_Import
+            // 
+            this.btn_Import.Caption = "Import file";
+            this.btn_Import.Id = 21;
+            this.btn_Import.ImageOptions.ImageUri.Uri = "Up";
+            this.btn_Import.Name = "btn_Import";
+            this.btn_Import.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Import_ItemClick);
             // 
             // btn_backtoMain
             // 
             this.btn_backtoMain.Caption = "Trở về trang chính";
-            this.btn_backtoMain.Id = 21;
+            this.btn_backtoMain.Id = 22;
             this.btn_backtoMain.ImageOptions.ImageUri.Uri = "Home";
             this.btn_backtoMain.Name = "btn_backtoMain";
             this.btn_backtoMain.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_backtoMain_ItemClick);
             // 
+            // btn_logOut
+            // 
+            this.btn_logOut.Caption = "Đăng xuất";
+            this.btn_logOut.Id = 23;
+            this.btn_logOut.ImageOptions.ImageUri.Uri = "Previous";
+            this.btn_logOut.Name = "btn_logOut";
+            this.btn_logOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Logout_ItemClick);
+            // 
             // btn_Close
             // 
             this.btn_Close.Caption = "Thoát";
-            this.btn_Close.Id = 22;
+            this.btn_Close.Id = 24;
             this.btn_Close.ImageOptions.ImageUri.Uri = "Close";
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Close_ItemClick);
-            // 
-            // btn_Refresh
-            // 
-            this.btn_Refresh.Caption = "Làm mới";
-            this.btn_Refresh.Id = 23;
-            this.btn_Refresh.ImageOptions.ImageUri.Uri = "Refresh";
-            this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Refresh_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -172,11 +185,11 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_Refresh);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_Import);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_backtoMain);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_logOut);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Close);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_useMinutes);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             // 
@@ -188,13 +201,7 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(790, 31);
             // 
-            // btn_useMinutes
-            // 
-            this.btn_useMinutes.Caption = "Xem thời gian sử dụng";
-            this.btn_useMinutes.Id = 24;
-            this.btn_useMinutes.Name = "btn_useMinutes";
-            // 
-            // BillGUI
+            // DetailGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,10 +209,10 @@
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "BillGUI";
+            this.Name = "DetailGUI";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Quản lý hóa đơn";
+            this.Text = "Quản lý hóa đơn chi tiết tính phí cước hàng tháng";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -227,10 +234,10 @@
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
-        private DevExpress.XtraBars.BarButtonItem btn_logOut;
+        private DevExpress.XtraBars.BarButtonItem bbiRefresh;
+        private DevExpress.XtraBars.BarButtonItem btn_Import;
         private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
+        private DevExpress.XtraBars.BarButtonItem btn_logOut;
         private DevExpress.XtraBars.BarButtonItem btn_Close;
-        private DevExpress.XtraBars.BarButtonItem btn_Refresh;
-        private DevExpress.XtraBars.BarButtonItem btn_useMinutes;
     }
 }
