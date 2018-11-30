@@ -18,8 +18,8 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
         DetailBUS detail = new DetailBUS();
         int temp_range = 0, min_ins = 0, min_out = 0, rs_min_ins = 0, rs_min_out = 0;
         TimeSpan start1, end1;
-        DateTime date2 = new DateTime(1996, 12, 6, 13, 2, 45);
-        DateTime date3 = new DateTime(1996, 10, 12, 8, 42, 0);
+        DateTime date2 = new DateTime(1996, 12, 6, 8, 2, 45);
+        DateTime date3 = new DateTime(1996, 10, 12, 21, 42, 0);
         public Test()
         {
             InitializeComponent(); time_Init();
@@ -48,17 +48,68 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.Public
                 min_ins = 1440 + temp_range;
             }
         }
+        public void calculate_time(DateTime start, DateTime end,ref int temp_range,ref int min_ins,ref int min_out,ref TimeSpan start1,ref TimeSpan end1,ref int rs_min_ins,ref int rs_min_out)
+        {
+            //
+            var minutes_subtract = start.Subtract(end).TotalMinutes;
+            if (minutes_subtract < 0)
+                minutes_subtract = -minutes_subtract;
+            //
+            int fulldays = 0;
+            while (minutes_subtract > 1440)
+            {
+                fulldays++;
+                minutes_subtract = minutes_subtract - 1440;
+            }
+
+
+            rs_min_ins = min_ins * fulldays;
+            rs_min_out = min_out * fulldays;
+
+            var a = start.TimeOfDay;
+            var b = end.TimeOfDay;
+            var s = start1;
+            var e = end1;
+            var subtract = Math.Abs(end1.TotalMinutes - start1.TotalMinutes);
+
+            if (a > s && b < e)
+            {
+                MessageBox.Show(a.ToString());
+                MessageBox.Show(s.ToString());
+                MessageBox.Show(b.ToString());
+                MessageBox.Show(e.ToString());
+
+
+                rs_min_ins += Convert.ToInt32(Math.Truncate(b.TotalMinutes - a.TotalMinutes));
+            }
+            else if (a < s && b > e)
+            {
+                MessageBox.Show(rs_min_ins.ToString());
+
+
+                rs_min_out += Convert.ToInt32(Math.Truncate(24 - e.TotalMinutes)) + Convert.ToInt32(a.TotalMinutes);
+                rs_min_ins += Convert.ToInt32(Math.Truncate(subtract));
+            }
+            else if (a > s && b > e)
+            {
+                MessageBox.Show(rs_min_ins.ToString());
+
+                rs_min_ins += Convert.ToInt32(Math.Truncate(e.TotalMinutes - a.TotalMinutes));
+                rs_min_out += Convert.ToInt32(Math.Truncate(b.TotalMinutes - e.TotalMinutes));
+            }
+            else if (a < s && b < e)
+            {
+                MessageBox.Show(rs_min_ins.ToString());
+
+                rs_min_ins += Convert.ToInt32(Math.Truncate(b.TotalMinutes - s.TotalMinutes));
+                rs_min_out += Convert.ToInt32(Math.Truncate(s.TotalMinutes - a.TotalMinutes));
+            }
+
+        }
         private void split_date()
         {
-            rs_min_ins = 0; rs_min_out = 0;
-
-            detail.calculate_time(date2, date3, temp_range, min_ins, min_out, start1, end1, rs_min_ins, rs_min_out);
-            MessageBox.Show(end1.ToString());
-            MessageBox.Show(start1.ToString());
-            MessageBox.Show(date2.TimeOfDay.ToString());
+            calculate_time(date2, date3,ref temp_range,ref min_ins,ref min_out,ref start1,ref end1, ref rs_min_ins,ref rs_min_out);
             MessageBox.Show(rs_min_ins.ToString());
-            MessageBox.Show(rs_min_out.ToString());
-            MessageBox.Show(Convert.ToInt32(Math.Truncate((start1-date2.TimeOfDay).TotalMinutes)).ToString());
         }
         // Show customer the table of minute use in each bill !
         private void gridControl1_Load(object sender, EventArgs e)

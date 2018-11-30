@@ -22,6 +22,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
         FareBUS fare = new FareBUS();
         int temp_range = 0,min_ins = 0, min_out = 0,rs_min_ins = 0,rs_min_out = 0;
         TimeSpan start1, end1;
+        Random random = new Random();
         public DetailImportGUI()
         {
             InitializeComponent();
@@ -83,8 +84,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
                     int itemRows = 0;
                     while (itemRows < 100)
                     {
-                        TimeSpan t1 = RandomTimeSpan();
-                        TimeSpan t2 = RandomTimeSpan();
+                        DateTime t1 = RandomDay();
+                        t1 = t1.Add(RandomTimeSpan());
+                        DateTime t2 = t1.Add(RandomTimeSpan());
                         itemRows++;
                         sw.WriteLine(RandomInteger(20).ToString() + "\t" + t1.ToString() + "\t" + t2.ToString());
                     }
@@ -92,9 +94,14 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
                 MessageBox.Show("Tạo log phát sinh ngẫu nhiên thành công !");
             }
         }
+        private DateTime RandomDay()
+        {
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(random.Next(range));
+        }
         private TimeSpan RandomTimeSpan()
         {
-            Random random = new Random();
             TimeSpan start = TimeSpan.FromHours(0);
             TimeSpan end = TimeSpan.FromHours(24);
             int maxMinutes = (int)((end - start).TotalMinutes);
@@ -103,8 +110,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
         }
         private int RandomInteger(int max)
         {
-            Random r = new Random();
-            return r.Next(1, max);
+            return random.Next(1, max);
         }
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -113,7 +119,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    MessageBox.Show(detail.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
+                    split_date(i);
+                    var total_fare = rs_min_ins * fare.getFare1("DAY") + rs_min_out * fare.getFare1("NIGHT");
+                    MessageBox.Show(detail.Import(gridView1.GetRowCellValue(i, "Mã Sim").ToString(), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()), rs_min_ins, rs_min_out, total_fare));
                     i++;
                 }
             }
@@ -136,35 +144,29 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
                 min_ins = 1440 + temp_range;
             }
         }
-        private void split_date()
+        private void split_date(int row)
         {
             rs_min_ins = 0;rs_min_out = 0;
 
-            detail.calculate_time(DateTime.Parse(gridView1.GetRowCellValue(0, "Thời gian bắt đầu").ToString()), DateTime.Parse(gridView1.GetRowCellValue(0, "Thời gian kết thúc").ToString()), temp_range, min_ins, min_out, start1, end1, rs_min_ins, rs_min_out);
-            MessageBox.Show(DateTime.Parse(gridView1.GetRowCellValue(0, "Thời gian bắt đầu").ToString()).TimeOfDay.ToString());
-            MessageBox.Show(DateTime.Parse(gridView1.GetRowCellValue(0, "Thời gian kết thúc").ToString()).TimeOfDay.ToString());
-            MessageBox.Show(end1.ToString());
-            MessageBox.Show(start1.ToString());
-            MessageBox.Show(rs_min_ins.ToString());
-            MessageBox.Show(rs_min_out.ToString());
+            detail.calculate_time(DateTime.Parse(gridView1.GetRowCellValue(row, "Thời gian bắt đầu").ToString()), DateTime.Parse(gridView1.GetRowCellValue(row, "Thời gian kết thúc").ToString()),ref temp_range,ref min_ins,ref min_out,ref start1,ref end1,ref rs_min_ins,ref rs_min_out);
+
         }
         private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            /*          
+        {  
             if (gridControl1.MainView.RowCount > 0)
             {
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    MessageBox.Show(detail.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
+                    split_date(i);
+                    var total_fare = rs_min_ins * fare.getFare1("DAY") + rs_min_out * fare.getFare1("NIGHT");
+                    MessageBox.Show(detail.Import(gridView1.GetRowCellValue(i, "Mã Sim").ToString(), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()),rs_min_ins,rs_min_out,total_fare));
                     i++;
                 }
             }
             else
                 MessageBox.Show("Không tồn tại bất kì dữ liệu ! Vui lòng import log từ bên ngoài !");
             this.Dispose();
-            */
-            split_date();
         }
 
         private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -174,7 +176,9 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.DetailGUI
                 int i = 0;
                 while (i < gridView1.RowCount)
                 {
-                    MessageBox.Show(detail.Import(Convert.ToInt32(gridView1.GetRowCellValue(i, "Mã Sim")), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), TimeSpan.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString())));
+                    split_date(i);
+                    var total_fare = rs_min_ins * fare.getFare1("DAY") + rs_min_out * fare.getFare1("NIGHT");
+                    MessageBox.Show(detail.Import(gridView1.GetRowCellValue(i, "Mã Sim").ToString(), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian bắt đầu").ToString()), DateTime.Parse(gridView1.GetRowCellValue(i, "Thời gian kết thúc").ToString()), rs_min_ins, rs_min_out, total_fare));
                     i++;
                 }
             }

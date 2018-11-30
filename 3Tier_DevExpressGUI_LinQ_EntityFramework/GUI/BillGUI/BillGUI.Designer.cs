@@ -43,7 +43,6 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.btn_useMinutes = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -83,10 +82,9 @@
             this.btn_logOut,
             this.btn_backtoMain,
             this.btn_Close,
-            this.btn_Refresh,
-            this.btn_useMinutes});
+            this.btn_Refresh});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 25;
+            this.ribbonControl.MaxItemId = 26;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -95,7 +93,12 @@
             this.ribbonControl.Size = new System.Drawing.Size(790, 143);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
-           // 
+            // 
+            // bbiPrintPreview
+            // 
+            this.bbiPrintPreview.Id = 25;
+            this.bbiPrintPreview.Name = "bbiPrintPreview";
+            // 
             // bsiRecordsCount
             // 
             this.bsiRecordsCount.Caption = "RECORDS : 0";
@@ -176,7 +179,6 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_backtoMain);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_logOut);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Close);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_useMinutes);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             // 
@@ -187,12 +189,6 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(790, 31);
-            // 
-            // btn_useMinutes
-            // 
-            this.btn_useMinutes.Caption = "Xem thời gian sử dụng";
-            this.btn_useMinutes.Id = 24;
-            this.btn_useMinutes.Name = "btn_useMinutes";
             // 
             // BillGUI
             // 
@@ -231,6 +227,5 @@
         private DevExpress.XtraBars.BarButtonItem btn_backtoMain;
         private DevExpress.XtraBars.BarButtonItem btn_Close;
         private DevExpress.XtraBars.BarButtonItem btn_Refresh;
-        private DevExpress.XtraBars.BarButtonItem btn_useMinutes;
     }
 }

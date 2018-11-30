@@ -20,50 +20,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.DAL
             this.detail.ID = id;
             this.detail.ID_SIM = id_sim;
             this.detail.TIME_START = start;
-            this.detail.TIME_STOP = stop;
-            
-            /*
-            TimeSpan a = start.TimeOfDay;
-            TimeSpan b = stop.TimeOfDay;
-            TimeSpan at_7 = new TimeSpan(7, 00, 00);
-            TimeSpan at_23 = new TimeSpan(23, 00, 00);
-            if (a <= at_7)
-            {
-                if (b <= at_23)
-                {
-
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-                if (b <= at_23)
-                {
-
-                }
-                else
-                {
-
-                }
-            }
-
-            //BEFORE <= ; AFTER >
-
-            //if a before 7 
-
-            //if b before 23 then b-7* + 7-a*
-
-            //if b after 23 then b-23* + 7-a* + 23-7*
-
-            //if a after 7 
-
-            //if b before 23 then b-a*
-
-            //if b after 23 then 23-a* + b-a*
-            */
+            this.detail.TIME_STOP = stop;            
         }
         public void setDetail(string id_sim, DateTime start, DateTime stop)
         {
