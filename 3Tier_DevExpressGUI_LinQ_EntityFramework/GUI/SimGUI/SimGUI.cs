@@ -34,6 +34,7 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             ((GridView)gridControl.MainView).Columns[4].Visible = false;
             ((GridView)gridControl.MainView).Columns[5].Visible = false;
             ((GridView)gridControl.MainView).Columns[6].Visible = false;
+            ((GridView)gridControl.MainView).Columns[7].Visible = false;
         }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)

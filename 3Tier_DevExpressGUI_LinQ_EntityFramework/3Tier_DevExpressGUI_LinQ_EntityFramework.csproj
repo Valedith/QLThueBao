@@ -159,12 +159,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\SimDAL.cs" />
-    <Compile Include="GUI\BillGUI\BillAdvSearchGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\BillGUI\BillAdvSearchGUI.Designer.cs">
-      <DependentUpon>BillAdvSearchGUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\BillGUI\BillGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,12 +177,6 @@
     <Compile Include="GUI\BillGUI\BillCreateInfoGUI.Designer.cs">
       <DependentUpon>BillCreateInfoGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ContractGUI\ContractAdvSearchGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ContractGUI\ContractAdvSearchGUI.Designer.cs">
-      <DependentUpon>ContractAdvSearchGUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ContractGUI\ContractCreateInfoGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,12 +194,6 @@
     </Compile>
     <Compile Include="GUI\ContractGUI\ContractEditGUI.Designer.cs">
       <DependentUpon>ContractEditGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CustomersGUI\CustomersAdvSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CustomersGUI\CustomersAdvSearch.Designer.cs">
-      <DependentUpon>CustomersAdvSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\CustomersGUI\CustomersCreateInfoGUI.cs">
       <SubType>Form</SubType>
@@ -260,12 +242,6 @@
     </Compile>
     <Compile Include="GUI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\SimGUI\SimAdvSearchGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\SimGUI\SimAdvSearchGUI.Designer.cs">
-      <DependentUpon>SimAdvSearchGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\SimGUI\SimGUI.cs">
       <SubType>Form</SubType>

@@ -51,10 +51,13 @@ namespace _3Tier_DevExpressGUI_LinQ_EntityFramework.GUI.SimGUI
             gridControl1.DataSource = sim.GetAll();
             gridControl1.MainView.PopulateColumns();
             ((GridView)gridControl1.MainView).Columns[0].Caption = "Mã sim";
-            ((GridView)gridControl1.MainView).Columns[1].Caption = "Số điện thoại";
-            ((GridView)gridControl1.MainView).Columns[2].Caption = "Tình trạng";
-            ((GridView)gridControl1.MainView).Columns[3].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[1].Caption = "Mã khách hàng";
+            ((GridView)gridControl1.MainView).Columns[2].Caption = "Số điện thoại";
+            ((GridView)gridControl1.MainView).Columns[3].Caption = "Tình trạng";
             ((GridView)gridControl1.MainView).Columns[4].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[5].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[6].Visible = false;
+            ((GridView)gridControl1.MainView).Columns[7].Visible = false;
             Reset();
         }
         private void Reset()
